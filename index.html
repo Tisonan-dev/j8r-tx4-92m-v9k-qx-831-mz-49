@@ -42,6 +42,80 @@
   },
   "outbounds": [
     {
+      "tag": "auto-wifi",
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "nl6.sky-vault.top",
+            "port": 443,
+            "users": [
+              {
+                "encryption": "none",
+                "flow": "xtls-rprx-vision",
+                "id": "7fb8c4e7-2f8c-40f5-ba5e-d0f70bbd0ffb",
+                "level": 0
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "realitySettings": {
+          "allowInsecure": false,
+          "fingerprint": "firefox",
+          "publicKey": "_KTsOFhGnC0W28ZqO8_FApozMp7tJ9cVBTLKLAA_OR0",
+          "serverName": "nl6.sky-vault.top",
+          "shortId": "ae64c9b46bff174a",
+          "show": false
+        },
+        "security": "reality",
+        "tcpSettings": {
+          "header": {
+            "type": "none"
+          }
+        }
+      }
+    },
+    {
+      "tag": "auto-lte",
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "st.wb-redir.top",
+            "port": 443,
+            "users": [
+              {
+                "encryption": "none",
+                "flow": "xtls-rprx-vision",
+                "id": "7dc7e4c8-c986-42f3-8281-bce2e0cb73f4",
+                "level": 0
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "realitySettings": {
+          "allowInsecure": false,
+          "fingerprint": "firefox",
+          "publicKey": "cFceImd3w-OVzIfeiuubhj63QHw1B9quHuD5SGQp8k0",
+          "serverName": "st.wb-redir.top",
+          "shortId": "b8bd6b530e124b20",
+          "show": false
+        },
+        "security": "reality",
+        "tcpSettings": {
+          "header": {
+            "type": "none"
+          }
+        }
+      }
+    },
+    {
       "tag": "vless-europe",
       "mux": {
         "concurrency": -1,
