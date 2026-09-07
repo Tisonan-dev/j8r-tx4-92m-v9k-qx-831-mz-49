@@ -1,1101 +1,1098 @@
-{
-  "dns": {
-    "queryStrategy": "UseIP",
-    "servers": [
-      "https://8.8.8.8/dns-query",
-      "https://8.8.4.4/dns-query",
-      "https://1.1.1.1/dns-query",
-      "https://1.0.0.1/dns-query",
-      "77.88.8.8",
-      "77.88.8.1"
-    ]
-  },
-  "inbounds": [
-    {
-      "listen": "127.0.0.1",
-      "port": 10808,
-      "protocol": "socks",
-      "settings": {
-        "auth": "noauth",
-        "udp": true,
-        "userLevel": 8
-      },
-      "sniffing": {
-        "destOverride": ["http", "tls"],
-        "enabled": true,
-        "routeOnly": false
-      },
-      "tag": "socks"
+[
+  {
+    "dns": {
+      "queryStrategy": "UseIP",
+      "servers": ["https://8.8.8.8/dns-query", "https://1.1.1.1/dns-query"]
     },
-    {
-      "listen": "127.0.0.1",
-      "port": 10809,
-      "protocol": "http",
-      "settings": {
-        "userLevel": 8
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {"auth": "noauth", "udp": true, "userLevel": 8},
+        "sniffing": {"destOverride": ["http", "tls"], "enabled": true, "routeOnly": false},
+        "tag": "socks"
       },
-      "tag": "http"
-    }
-  ],
-  "log": {
-    "loglevel": "warning"
-  },
-  "outbounds": [
-    {
-      "tag": "vless-europe",
-      "mux": {
-        "concurrency": -1,
-        "enabled": false
-      },
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {"userLevel": 8},
+        "tag": "http"
+      }
+    ],
+    "log": {"loglevel": "warning"},
+    "outbounds": [
+      {
+        "tag": "vless-europe",
+        "mux": {"concurrency": -1, "enabled": false},
+        "protocol": "vless",
+        "settings": {
+          "vnext": [{
             "address": "nl6.sky-vault.top",
             "port": 443,
-            "users": [
-              {
-                "encryption": "none",
-                "flow": "xtls-rprx-vision",
-                "id": "7fb8c4e7-2f8c-40f5-ba5e-d0f70bbd0ffb",
-                "level": 0
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "tcp",
-        "realitySettings": {
-          "allowInsecure": false,
-          "fingerprint": "firefox",
-          "publicKey": "_KTsOFhGnC0W28ZqO8_FApozMp7tJ9cVBTLKLAA_OR0",
-          "serverName": "nl6.sky-vault.top",
-          "shortId": "ae64c9b46bff174a",
-          "show": false
+            "users": [{"encryption": "none", "flow": "xtls-rprx-vision", "id": "7fb8c4e7-2f8c-40f5-ba5e-d0f70bbd0ffb", "level": 0}]
+          }]
         },
-        "security": "reality",
-        "tcpSettings": {
-          "header": {
-            "type": "none"
-          }
+        "streamSettings": {
+          "network": "tcp",
+          "realitySettings": {
+            "allowInsecure": false,
+            "fingerprint": "firefox",
+            "publicKey": "_KTsOFhGnC0W28ZqO8_FApozMp7tJ9cVBTLKLAA_OR0",
+            "serverName": "nl6.sky-vault.top",
+            "shortId": "ae64c9b46bff174a",
+            "show": false
+          },
+          "security": "reality",
+          "tcpSettings": {"header": {"type": "none"}}
         }
-      }
-    },
-    {
-      "tag": "vless-europe-enhanced",
-      "mux": {
-        "concurrency": -1,
-        "enabled": false
       },
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
+      {"protocol": "freedom", "settings": {"domainStrategy": "UseIP"}, "tag": "direct"},
+      {"protocol": "blackhole", "settings": {"response": {"type": "http"}}, "tag": "block"}
+    ],
+    "remarks": "🇪🇺Европа | ⚡ Быстрый · 5 Гбит/с",
+    "routing": {
+      "domainMatcher": "hybrid",
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {"outboundTag": "direct", "protocol": ["bittorrent"], "type": "field"},
+        {"network": "tcp,udp", "outboundTag": "vless-europe", "type": "field"}
+      ]
+    }
+  },
+  {
+    "dns": {
+      "queryStrategy": "UseIP",
+      "servers": ["https://8.8.8.8/dns-query", "https://1.1.1.1/dns-query"]
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {"auth": "noauth", "udp": true, "userLevel": 8},
+        "sniffing": {"destOverride": ["http", "tls"], "enabled": true, "routeOnly": false},
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {"userLevel": 8},
+        "tag": "http"
+      }
+    ],
+    "log": {"loglevel": "warning"},
+    "outbounds": [
+      {
+        "tag": "vless-europe-enhanced",
+        "mux": {"concurrency": -1, "enabled": false},
+        "protocol": "vless",
+        "settings": {
+          "vnext": [{
             "address": "rudbl13.sky-vault.top",
             "port": 443,
-            "users": [
-              {
-                "encryption": "none",
-                "flow": "xtls-rprx-vision",
-                "id": "7fb8c4e7-2f8c-40f5-ba5e-d0f70bbd0ffb",
-                "level": 0
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "tcp",
-        "tlsSettings": {
-          "allowInsecure": false,
-          "fingerprint": "firefox",
-          "serverName": "rudbl13.sky-vault.top",
-          "alpn": ["h2", "http/1.1"]
+            "users": [{"encryption": "none", "flow": "xtls-rprx-vision", "id": "7fb8c4e7-2f8c-40f5-ba5e-d0f70bbd0ffb", "level": 0}]
+          }]
         },
-        "security": "tls",
-        "tcpSettings": {
-          "header": {
-            "type": "none"
-          }
+        "streamSettings": {
+          "network": "tcp",
+          "tlsSettings": {"allowInsecure": false, "fingerprint": "firefox", "serverName": "rudbl13.sky-vault.top", "alpn": ["h2", "http/1.1"]},
+          "security": "tls",
+          "tcpSettings": {"header": {"type": "none"}}
         }
-      }
-    },
-    {
-      "tag": "vless-netherlands",
-      "mux": {
-        "concurrency": -1,
-        "enabled": false
       },
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
+      {"protocol": "freedom", "settings": {"domainStrategy": "UseIP"}, "tag": "direct"},
+      {"protocol": "blackhole", "settings": {"response": {"type": "http"}}, "tag": "block"}
+    ],
+    "remarks": "🇪🇺Европа | Усиленная | Быстрый. Через Россию",
+    "routing": {
+      "domainMatcher": "hybrid",
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {"outboundTag": "direct", "protocol": ["bittorrent"], "type": "field"},
+        {"network": "tcp,udp", "outboundTag": "vless-europe-enhanced", "type": "field"}
+      ]
+    }
+  },
+  {
+    "dns": {
+      "queryStrategy": "UseIP",
+      "servers": ["https://8.8.8.8/dns-query", "https://1.1.1.1/dns-query"]
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {"auth": "noauth", "udp": true, "userLevel": 8},
+        "sniffing": {"destOverride": ["http", "tls"], "enabled": true, "routeOnly": false},
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {"userLevel": 8},
+        "tag": "http"
+      }
+    ],
+    "log": {"loglevel": "warning"},
+    "outbounds": [
+      {
+        "tag": "vless-netherlands",
+        "mux": {"concurrency": -1, "enabled": false},
+        "protocol": "vless",
+        "settings": {
+          "vnext": [{
             "address": "nl3.sky-vault.top",
             "port": 8443,
-            "users": [
-              {
-                "encryption": "none",
-                "id": "7fb8c4e7-2f8c-40f5-ba5e-d0f70bbd0ffb",
-                "level": 0
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "xhttp",
-        "realitySettings": {
-          "allowInsecure": false,
-          "fingerprint": "firefox",
-          "publicKey": "_KTsOFhGnC0W28ZqO8_FApozMp7tJ9cVBTLKLAA_OR0",
-          "serverName": "nl3.sky-vault.top",
-          "shortId": "ae64c9b46bff174a",
-          "show": false
+            "users": [{"encryption": "none", "id": "7fb8c4e7-2f8c-40f5-ba5e-d0f70bbd0ffb", "level": 0}]
+          }]
         },
-        "security": "reality",
-        "xhttpSettings": {
-          "path": "/path",
-          "mode": "auto",
-          "headers": {
-            "Accept": "*/*",
-            "Referer": "https://vk.com/",
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+        "streamSettings": {
+          "network": "xhttp",
+          "realitySettings": {
+            "allowInsecure": false,
+            "fingerprint": "firefox",
+            "publicKey": "_KTsOFhGnC0W28ZqO8_FApozMp7tJ9cVBTLKLAA_OR0",
+            "serverName": "nl3.sky-vault.top",
+            "shortId": "ae64c9b46bff174a",
+            "show": false
+          },
+          "security": "reality",
+          "xhttpSettings": {
+            "path": "/path",
+            "mode": "auto",
+            "headers": {
+              "Accept": "*/*",
+              "Referer": "https://vk.com/",
+              "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+            }
           }
         }
-      }
-    },
-    {
-      "tag": "vless-poland",
-      "mux": {
-        "concurrency": -1,
-        "enabled": false
       },
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
+      {"protocol": "freedom", "settings": {"domainStrategy": "UseIP"}, "tag": "direct"},
+      {"protocol": "blackhole", "settings": {"response": {"type": "http"}}, "tag": "block"}
+    ],
+    "remarks": "🇳🇱Нидерланды | Если не работают др.",
+    "routing": {
+      "domainMatcher": "hybrid",
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {"outboundTag": "direct", "protocol": ["bittorrent"], "type": "field"},
+        {"network": "tcp,udp", "outboundTag": "vless-netherlands", "type": "field"}
+      ]
+    }
+  },
+  {
+    "dns": {
+      "queryStrategy": "UseIP",
+      "servers": ["https://8.8.8.8/dns-query", "https://1.1.1.1/dns-query"]
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {"auth": "noauth", "udp": true, "userLevel": 8},
+        "sniffing": {"destOverride": ["http", "tls"], "enabled": true, "routeOnly": false},
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {"userLevel": 8},
+        "tag": "http"
+      }
+    ],
+    "log": {"loglevel": "warning"},
+    "outbounds": [
+      {
+        "tag": "vless-poland",
+        "mux": {"concurrency": -1, "enabled": false},
+        "protocol": "vless",
+        "settings": {
+          "vnext": [{
             "address": "pl9.sky-vault.top",
             "port": 443,
-            "users": [
-              {
-                "encryption": "none",
-                "flow": "xtls-rprx-vision",
-                "id": "7fb8c4e7-2f8c-40f5-ba5e-d0f70bbd0ffb",
-                "level": 0
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "tcp",
-        "realitySettings": {
-          "allowInsecure": false,
-          "fingerprint": "firefox",
-          "publicKey": "_KTsOFhGnC0W28ZqO8_FApozMp7tJ9cVBTLKLAA_OR0",
-          "serverName": "pl9.sky-vault.top",
-          "shortId": "ae64c9b46bff174a",
-          "show": false
+            "users": [{"encryption": "none", "flow": "xtls-rprx-vision", "id": "7fb8c4e7-2f8c-40f5-ba5e-d0f70bbd0ffb", "level": 0}]
+          }]
         },
-        "security": "reality",
-        "tcpSettings": {
-          "header": {
-            "type": "none"
-          }
+        "streamSettings": {
+          "network": "tcp",
+          "realitySettings": {
+            "allowInsecure": false,
+            "fingerprint": "firefox",
+            "publicKey": "_KTsOFhGnC0W28ZqO8_FApozMp7tJ9cVBTLKLAA_OR0",
+            "serverName": "pl9.sky-vault.top",
+            "shortId": "ae64c9b46bff174a",
+            "show": false
+          },
+          "security": "reality",
+          "tcpSettings": {"header": {"type": "none"}}
         }
-      }
-    },
-    {
-      "tag": "vless-france",
-      "mux": {
-        "concurrency": -1,
-        "enabled": false
       },
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
+      {"protocol": "freedom", "settings": {"domainStrategy": "UseIP"}, "tag": "direct"},
+      {"protocol": "blackhole", "settings": {"response": {"type": "http"}}, "tag": "block"}
+    ],
+    "remarks": "🇵🇱Польша | ⚡ Быстрый · 10 Гбит/с",
+    "routing": {
+      "domainMatcher": "hybrid",
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {"outboundTag": "direct", "protocol": ["bittorrent"], "type": "field"},
+        {"network": "tcp,udp", "outboundTag": "vless-poland", "type": "field"}
+      ]
+    }
+  },
+  {
+    "dns": {
+      "queryStrategy": "UseIP",
+      "servers": ["https://8.8.8.8/dns-query", "https://1.1.1.1/dns-query"]
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {"auth": "noauth", "udp": true, "userLevel": 8},
+        "sniffing": {"destOverride": ["http", "tls"], "enabled": true, "routeOnly": false},
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {"userLevel": 8},
+        "tag": "http"
+      }
+    ],
+    "log": {"loglevel": "warning"},
+    "outbounds": [
+      {
+        "tag": "vless-france",
+        "mux": {"concurrency": -1, "enabled": false},
+        "protocol": "vless",
+        "settings": {
+          "vnext": [{
             "address": "fr2.sky-vault.top",
             "port": 443,
-            "users": [
-              {
-                "encryption": "none",
-                "flow": "xtls-rprx-vision",
-                "id": "7fb8c4e7-2f8c-40f5-ba5e-d0f70bbd0ffb",
-                "level": 0
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "tcp",
-        "realitySettings": {
-          "allowInsecure": false,
-          "fingerprint": "firefox",
-          "publicKey": "_KTsOFhGnC0W28ZqO8_FApozMp7tJ9cVBTLKLAA_OR0",
-          "serverName": "fr2.sky-vault.top",
-          "shortId": "ae64c9b46bff174a",
-          "show": false
+            "users": [{"encryption": "none", "flow": "xtls-rprx-vision", "id": "7fb8c4e7-2f8c-40f5-ba5e-d0f70bbd0ffb", "level": 0}]
+          }]
         },
-        "security": "reality",
-        "tcpSettings": {
-          "header": {
-            "type": "none"
-          }
+        "streamSettings": {
+          "network": "tcp",
+          "realitySettings": {
+            "allowInsecure": false,
+            "fingerprint": "firefox",
+            "publicKey": "_KTsOFhGnC0W28ZqO8_FApozMp7tJ9cVBTLKLAA_OR0",
+            "serverName": "fr2.sky-vault.top",
+            "shortId": "ae64c9b46bff174a",
+            "show": false
+          },
+          "security": "reality",
+          "tcpSettings": {"header": {"type": "none"}}
         }
-      }
-    },
-    {
-      "tag": "vless-turkey",
-      "mux": {
-        "concurrency": -1,
-        "enabled": false
       },
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
+      {"protocol": "freedom", "settings": {"domainStrategy": "UseIP"}, "tag": "direct"},
+      {"protocol": "blackhole", "settings": {"response": {"type": "http"}}, "tag": "block"}
+    ],
+    "remarks": "🇫🇷Франция | ⚡ Быстрый · 10 Гбит/с",
+    "routing": {
+      "domainMatcher": "hybrid",
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {"outboundTag": "direct", "protocol": ["bittorrent"], "type": "field"},
+        {"network": "tcp,udp", "outboundTag": "vless-france", "type": "field"}
+      ]
+    }
+  },
+  {
+    "dns": {
+      "queryStrategy": "UseIP",
+      "servers": ["https://8.8.8.8/dns-query", "https://1.1.1.1/dns-query"]
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {"auth": "noauth", "udp": true, "userLevel": 8},
+        "sniffing": {"destOverride": ["http", "tls"], "enabled": true, "routeOnly": false},
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {"userLevel": 8},
+        "tag": "http"
+      }
+    ],
+    "log": {"loglevel": "warning"},
+    "outbounds": [
+      {
+        "tag": "vless-turkey",
+        "mux": {"concurrency": -1, "enabled": false},
+        "protocol": "vless",
+        "settings": {
+          "vnext": [{
             "address": "tr1.sky-vault.top",
             "port": 443,
-            "users": [
-              {
-                "encryption": "none",
-                "flow": "xtls-rprx-vision",
-                "id": "7fb8c4e7-2f8c-40f5-ba5e-d0f70bbd0ffb",
-                "level": 0
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "tcp",
-        "realitySettings": {
-          "allowInsecure": false,
-          "fingerprint": "firefox",
-          "publicKey": "_KTsOFhGnC0W28ZqO8_FApozMp7tJ9cVBTLKLAA_OR0",
-          "serverName": "tr1.sky-vault.top",
-          "shortId": "ae64c9b46bff174a",
-          "show": false
+            "users": [{"encryption": "none", "flow": "xtls-rprx-vision", "id": "7fb8c4e7-2f8c-40f5-ba5e-d0f70bbd0ffb", "level": 0}]
+          }]
         },
-        "security": "reality",
-        "tcpSettings": {
-          "header": {
-            "type": "none"
-          }
+        "streamSettings": {
+          "network": "tcp",
+          "realitySettings": {
+            "allowInsecure": false,
+            "fingerprint": "firefox",
+            "publicKey": "_KTsOFhGnC0W28ZqO8_FApozMp7tJ9cVBTLKLAA_OR0",
+            "serverName": "tr1.sky-vault.top",
+            "shortId": "ae64c9b46bff174a",
+            "show": false
+          },
+          "security": "reality",
+          "tcpSettings": {"header": {"type": "none"}}
         }
-      }
-    },
-    {
-      "tag": "vless-germany-gaming",
-      "mux": {
-        "concurrency": -1,
-        "enabled": false
       },
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
+      {"protocol": "freedom", "settings": {"domainStrategy": "UseIP"}, "tag": "direct"},
+      {"protocol": "blackhole", "settings": {"response": {"type": "http"}}, "tag": "block"}
+    ],
+    "remarks": "🇹🇷Турция | ⚡ Быстрый · 10 Гбит/с",
+    "routing": {
+      "domainMatcher": "hybrid",
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {"outboundTag": "direct", "protocol": ["bittorrent"], "type": "field"},
+        {"network": "tcp,udp", "outboundTag": "vless-turkey", "type": "field"}
+      ]
+    }
+  },
+  {
+    "dns": {
+      "queryStrategy": "UseIP",
+      "servers": ["https://8.8.8.8/dns-query", "https://1.1.1.1/dns-query"]
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {"auth": "noauth", "udp": true, "userLevel": 8},
+        "sniffing": {"destOverride": ["http", "tls"], "enabled": true, "routeOnly": false},
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {"userLevel": 8},
+        "tag": "http"
+      }
+    ],
+    "log": {"loglevel": "warning"},
+    "outbounds": [
+      {
+        "tag": "vless-germany-gaming",
+        "mux": {"concurrency": -1, "enabled": false},
+        "protocol": "vless",
+        "settings": {
+          "vnext": [{
             "address": "de9.sky-vault.top",
             "port": 443,
-            "users": [
-              {
-                "encryption": "none",
-                "flow": "xtls-rprx-vision",
-                "id": "7fb8c4e7-2f8c-40f5-ba5e-d0f70bbd0ffb",
-                "level": 0
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "tcp",
-        "realitySettings": {
-          "allowInsecure": false,
-          "fingerprint": "firefox",
-          "publicKey": "_KTsOFhGnC0W28ZqO8_FApozMp7tJ9cVBTLKLAA_OR0",
-          "serverName": "de9.sky-vault.top",
-          "shortId": "ae64c9b46bff174a",
-          "show": false
+            "users": [{"encryption": "none", "flow": "xtls-rprx-vision", "id": "7fb8c4e7-2f8c-40f5-ba5e-d0f70bbd0ffb", "level": 0}]
+          }]
         },
-        "security": "reality",
-        "tcpSettings": {
-          "header": {
-            "type": "none"
-          }
+        "streamSettings": {
+          "network": "tcp",
+          "realitySettings": {
+            "allowInsecure": false,
+            "fingerprint": "firefox",
+            "publicKey": "_KTsOFhGnC0W28ZqO8_FApozMp7tJ9cVBTLKLAA_OR0",
+            "serverName": "de9.sky-vault.top",
+            "shortId": "ae64c9b46bff174a",
+            "show": false
+          },
+          "security": "reality",
+          "tcpSettings": {"header": {"type": "none"}}
         }
-      }
-    },
-    {
-      "tag": "vless-estonia",
-      "mux": {
-        "concurrency": -1,
-        "enabled": false
       },
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
+      {"protocol": "freedom", "settings": {"domainStrategy": "UseIP"}, "tag": "direct"},
+      {"protocol": "blackhole", "settings": {"response": {"type": "http"}}, "tag": "block"}
+    ],
+    "remarks": "🇩🇪Германия | 🎮Игровой | 🎮 Для мобильных игр",
+    "routing": {
+      "domainMatcher": "hybrid",
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {"outboundTag": "direct", "protocol": ["bittorrent"], "type": "field"},
+        {"network": "tcp,udp", "outboundTag": "vless-germany-gaming", "type": "field"}
+      ]
+    }
+  },
+  {
+    "dns": {
+      "queryStrategy": "UseIP",
+      "servers": ["https://8.8.8.8/dns-query", "https://1.1.1.1/dns-query"]
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {"auth": "noauth", "udp": true, "userLevel": 8},
+        "sniffing": {"destOverride": ["http", "tls"], "enabled": true, "routeOnly": false},
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {"userLevel": 8},
+        "tag": "http"
+      }
+    ],
+    "log": {"loglevel": "warning"},
+    "outbounds": [
+      {
+        "tag": "vless-estonia",
+        "mux": {"concurrency": -1, "enabled": false},
+        "protocol": "vless",
+        "settings": {
+          "vnext": [{
             "address": "ee2.sky-vault.top",
             "port": 443,
-            "users": [
-              {
-                "encryption": "none",
-                "flow": "xtls-rprx-vision",
-                "id": "7fb8c4e7-2f8c-40f5-ba5e-d0f70bbd0ffb",
-                "level": 0
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "tcp",
-        "realitySettings": {
-          "allowInsecure": false,
-          "fingerprint": "firefox",
-          "publicKey": "_KTsOFhGnC0W28ZqO8_FApozMp7tJ9cVBTLKLAA_OR0",
-          "serverName": "ee2.sky-vault.top",
-          "shortId": "ae64c9b46bff174a",
-          "show": false
+            "users": [{"encryption": "none", "flow": "xtls-rprx-vision", "id": "7fb8c4e7-2f8c-40f5-ba5e-d0f70bbd0ffb", "level": 0}]
+          }]
         },
-        "security": "reality",
-        "tcpSettings": {
-          "header": {
-            "type": "none"
-          }
+        "streamSettings": {
+          "network": "tcp",
+          "realitySettings": {
+            "allowInsecure": false,
+            "fingerprint": "firefox",
+            "publicKey": "_KTsOFhGnC0W28ZqO8_FApozMp7tJ9cVBTLKLAA_OR0",
+            "serverName": "ee2.sky-vault.top",
+            "shortId": "ae64c9b46bff174a",
+            "show": false
+          },
+          "security": "reality",
+          "tcpSettings": {"header": {"type": "none"}}
         }
-      }
-    },
-    {
-      "tag": "vless-usa-ai",
-      "mux": {
-        "concurrency": -1,
-        "enabled": false
       },
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
+      {"protocol": "freedom", "settings": {"domainStrategy": "UseIP"}, "tag": "direct"},
+      {"protocol": "blackhole", "settings": {"response": {"type": "http"}}, "tag": "block"}
+    ],
+    "remarks": "🇪🇪Эстония | ⚡ Быстрый · 10 Гбит/с",
+    "routing": {
+      "domainMatcher": "hybrid",
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {"outboundTag": "direct", "protocol": ["bittorrent"], "type": "field"},
+        {"network": "tcp,udp", "outboundTag": "vless-estonia", "type": "field"}
+      ]
+    }
+  },
+  {
+    "dns": {
+      "queryStrategy": "UseIP",
+      "servers": ["https://8.8.8.8/dns-query", "https://1.1.1.1/dns-query"]
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {"auth": "noauth", "udp": true, "userLevel": 8},
+        "sniffing": {"destOverride": ["http", "tls"], "enabled": true, "routeOnly": false},
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {"userLevel": 8},
+        "tag": "http"
+      }
+    ],
+    "log": {"loglevel": "warning"},
+    "outbounds": [
+      {
+        "tag": "vless-usa-ai",
+        "mux": {"concurrency": -1, "enabled": false},
+        "protocol": "vless",
+        "settings": {
+          "vnext": [{
             "address": "us1.sky-vault.top",
             "port": 443,
-            "users": [
-              {
-                "encryption": "none",
-                "flow": "xtls-rprx-vision",
-                "id": "7fb8c4e7-2f8c-40f5-ba5e-d0f70bbd0ffb",
-                "level": 0
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "tcp",
-        "realitySettings": {
-          "allowInsecure": false,
-          "fingerprint": "firefox",
-          "publicKey": "_KTsOFhGnC0W28ZqO8_FApozMp7tJ9cVBTLKLAA_OR0",
-          "serverName": "us1.sky-vault.top",
-          "shortId": "ae64c9b46bff174a",
-          "show": false
+            "users": [{"encryption": "none", "flow": "xtls-rprx-vision", "id": "7fb8c4e7-2f8c-40f5-ba5e-d0f70bbd0ffb", "level": 0}]
+          }]
         },
-        "security": "reality",
-        "tcpSettings": {
-          "header": {
-            "type": "none"
-          }
+        "streamSettings": {
+          "network": "tcp",
+          "realitySettings": {
+            "allowInsecure": false,
+            "fingerprint": "firefox",
+            "publicKey": "_KTsOFhGnC0W28ZqO8_FApozMp7tJ9cVBTLKLAA_OR0",
+            "serverName": "us1.sky-vault.top",
+            "shortId": "ae64c9b46bff174a",
+            "show": false
+          },
+          "security": "reality",
+          "tcpSettings": {"header": {"type": "none"}}
         }
-      }
-    },
-    {
-      "tag": "vless-moldova",
-      "mux": {
-        "concurrency": -1,
-        "enabled": false
       },
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
+      {"protocol": "freedom", "settings": {"domainStrategy": "UseIP"}, "tag": "direct"},
+      {"protocol": "blackhole", "settings": {"response": {"type": "http"}}, "tag": "block"}
+    ],
+    "remarks": "🇺🇸США | 🤖Нейросети | 🤖Доступ к Gemini и др.",
+    "routing": {
+      "domainMatcher": "hybrid",
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {"outboundTag": "direct", "protocol": ["bittorrent"], "type": "field"},
+        {"network": "tcp,udp", "outboundTag": "vless-usa-ai", "type": "field"}
+      ]
+    }
+  },
+  {
+    "dns": {
+      "queryStrategy": "UseIP",
+      "servers": ["https://8.8.8.8/dns-query", "https://1.1.1.1/dns-query"]
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {"auth": "noauth", "udp": true, "userLevel": 8},
+        "sniffing": {"destOverride": ["http", "tls"], "enabled": true, "routeOnly": false},
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {"userLevel": 8},
+        "tag": "http"
+      }
+    ],
+    "log": {"loglevel": "warning"},
+    "outbounds": [
+      {
+        "tag": "vless-moldova",
+        "mux": {"concurrency": -1, "enabled": false},
+        "protocol": "vless",
+        "settings": {
+          "vnext": [{
             "address": "md4.sky-vault.top",
             "port": 443,
-            "users": [
-              {
-                "encryption": "none",
-                "flow": "xtls-rprx-vision",
-                "id": "7fb8c4e7-2f8c-40f5-ba5e-d0f70bbd0ffb",
-                "level": 0
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "tcp",
-        "realitySettings": {
-          "allowInsecure": false,
-          "fingerprint": "firefox",
-          "publicKey": "_KTsOFhGnC0W28ZqO8_FApozMp7tJ9cVBTLKLAA_OR0",
-          "serverName": "md4.sky-vault.top",
-          "shortId": "ae64c9b46bff174a",
-          "show": false
+            "users": [{"encryption": "none", "flow": "xtls-rprx-vision", "id": "7fb8c4e7-2f8c-40f5-ba5e-d0f70bbd0ffb", "level": 0}]
+          }]
         },
-        "security": "reality",
-        "tcpSettings": {
-          "header": {
-            "type": "none"
-          }
+        "streamSettings": {
+          "network": "tcp",
+          "realitySettings": {
+            "allowInsecure": false,
+            "fingerprint": "firefox",
+            "publicKey": "_KTsOFhGnC0W28ZqO8_FApozMp7tJ9cVBTLKLAA_OR0",
+            "serverName": "md4.sky-vault.top",
+            "shortId": "ae64c9b46bff174a",
+            "show": false
+          },
+          "security": "reality",
+          "tcpSettings": {"header": {"type": "none"}}
         }
-      }
-    },
-    {
-      "tag": "vless-finland",
-      "mux": {
-        "concurrency": -1,
-        "enabled": false
       },
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
+      {"protocol": "freedom", "settings": {"domainStrategy": "UseIP"}, "tag": "direct"},
+      {"protocol": "blackhole", "settings": {"response": {"type": "http"}}, "tag": "block"}
+    ],
+    "remarks": "🇲🇩Молдова | 🏴‍☠️ Торренты нежелательны.",
+    "routing": {
+      "domainMatcher": "hybrid",
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {"outboundTag": "direct", "protocol": ["bittorrent"], "type": "field"},
+        {"network": "tcp,udp", "outboundTag": "vless-moldova", "type": "field"}
+      ]
+    }
+  },
+  {
+    "dns": {
+      "queryStrategy": "UseIP",
+      "servers": ["https://8.8.8.8/dns-query", "https://1.1.1.1/dns-query"]
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {"auth": "noauth", "udp": true, "userLevel": 8},
+        "sniffing": {"destOverride": ["http", "tls"], "enabled": true, "routeOnly": false},
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {"userLevel": 8},
+        "tag": "http"
+      }
+    ],
+    "log": {"loglevel": "warning"},
+    "outbounds": [
+      {
+        "tag": "vless-finland",
+        "mux": {"concurrency": -1, "enabled": false},
+        "protocol": "vless",
+        "settings": {
+          "vnext": [{
             "address": "fl.sky-vault.top",
             "port": 443,
-            "users": [
-              {
-                "encryption": "none",
-                "flow": "xtls-rprx-vision",
-                "id": "7fb8c4e7-2f8c-40f5-ba5e-d0f70bbd0ffb",
-                "level": 0
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "tcp",
-        "realitySettings": {
-          "allowInsecure": false,
-          "fingerprint": "firefox",
-          "publicKey": "_KTsOFhGnC0W28ZqO8_FApozMp7tJ9cVBTLKLAA_OR0",
-          "serverName": "fl.sky-vault.top",
-          "shortId": "ae64c9b46bff174a",
-          "show": false
+            "users": [{"encryption": "none", "flow": "xtls-rprx-vision", "id": "7fb8c4e7-2f8c-40f5-ba5e-d0f70bbd0ffb", "level": 0}]
+          }]
         },
-        "security": "reality",
-        "tcpSettings": {
-          "header": {
-            "type": "none"
-          }
+        "streamSettings": {
+          "network": "tcp",
+          "realitySettings": {
+            "allowInsecure": false,
+            "fingerprint": "firefox",
+            "publicKey": "_KTsOFhGnC0W28ZqO8_FApozMp7tJ9cVBTLKLAA_OR0",
+            "serverName": "fl.sky-vault.top",
+            "shortId": "ae64c9b46bff174a",
+            "show": false
+          },
+          "security": "reality",
+          "tcpSettings": {"header": {"type": "none"}}
         }
-      }
-    },
-    {
-      "tag": "vless-kazakhstan",
-      "mux": {
-        "concurrency": -1,
-        "enabled": false
       },
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
+      {"protocol": "freedom", "settings": {"domainStrategy": "UseIP"}, "tag": "direct"},
+      {"protocol": "blackhole", "settings": {"response": {"type": "http"}}, "tag": "block"}
+    ],
+    "remarks": "🇫🇮Финляндия | ⚡ Быстрый · 10 Гбит/с",
+    "routing": {
+      "domainMatcher": "hybrid",
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {"outboundTag": "direct", "protocol": ["bittorrent"], "type": "field"},
+        {"network": "tcp,udp", "outboundTag": "vless-finland", "type": "field"}
+      ]
+    }
+  },
+  {
+    "dns": {
+      "queryStrategy": "UseIP",
+      "servers": ["https://8.8.8.8/dns-query", "https://1.1.1.1/dns-query"]
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {"auth": "noauth", "udp": true, "userLevel": 8},
+        "sniffing": {"destOverride": ["http", "tls"], "enabled": true, "routeOnly": false},
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {"userLevel": 8},
+        "tag": "http"
+      }
+    ],
+    "log": {"loglevel": "warning"},
+    "outbounds": [
+      {
+        "tag": "vless-kazakhstan",
+        "mux": {"concurrency": -1, "enabled": false},
+        "protocol": "vless",
+        "settings": {
+          "vnext": [{
             "address": "kz4.sky-vault.top",
             "port": 443,
-            "users": [
-              {
-                "encryption": "none",
-                "flow": "xtls-rprx-vision",
-                "id": "7fb8c4e7-2f8c-40f5-ba5e-d0f70bbd0ffb",
-                "level": 0
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "tcp",
-        "realitySettings": {
-          "allowInsecure": false,
-          "fingerprint": "chrome",
-          "publicKey": "_KTsOFhGnC0W28ZqO8_FApozMp7tJ9cVBTLKLAA_OR0",
-          "serverName": "kz4.sky-vault.top",
-          "shortId": "ae64c9b46bff174a",
-          "show": false
+            "users": [{"encryption": "none", "flow": "xtls-rprx-vision", "id": "7fb8c4e7-2f8c-40f5-ba5e-d0f70bbd0ffb", "level": 0}]
+          }]
         },
-        "security": "reality",
-        "tcpSettings": {
-          "header": {
-            "type": "none"
-          }
+        "streamSettings": {
+          "network": "tcp",
+          "realitySettings": {
+            "allowInsecure": false,
+            "fingerprint": "chrome",
+            "publicKey": "_KTsOFhGnC0W28ZqO8_FApozMp7tJ9cVBTLKLAA_OR0",
+            "serverName": "kz4.sky-vault.top",
+            "shortId": "ae64c9b46bff174a",
+            "show": false
+          },
+          "security": "reality",
+          "tcpSettings": {"header": {"type": "none"}}
         }
-      }
-    },
-    {
-      "tag": "vless-russia",
-      "mux": {
-        "concurrency": -1,
-        "enabled": false
       },
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
+      {"protocol": "freedom", "settings": {"domainStrategy": "UseIP"}, "tag": "direct"},
+      {"protocol": "blackhole", "settings": {"response": {"type": "http"}}, "tag": "block"}
+    ],
+    "remarks": "🇰🇿Казахстан | ⚡ Быстрый · 5 Гбит/с",
+    "routing": {
+      "domainMatcher": "hybrid",
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {"outboundTag": "direct", "protocol": ["bittorrent"], "type": "field"},
+        {"network": "tcp,udp", "outboundTag": "vless-kazakhstan", "type": "field"}
+      ]
+    }
+  },
+  {
+    "dns": {
+      "queryStrategy": "UseIP",
+      "servers": ["https://8.8.8.8/dns-query", "https://1.1.1.1/dns-query"]
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {"auth": "noauth", "udp": true, "userLevel": 8},
+        "sniffing": {"destOverride": ["http", "tls"], "enabled": true, "routeOnly": false},
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {"userLevel": 8},
+        "tag": "http"
+      }
+    ],
+    "log": {"loglevel": "warning"},
+    "outbounds": [
+      {
+        "tag": "vless-russia",
+        "mux": {"concurrency": -1, "enabled": false},
+        "protocol": "vless",
+        "settings": {
+          "vnext": [{
             "address": "ru2.sky-vault.top",
             "port": 443,
-            "users": [
-              {
-                "encryption": "none",
-                "flow": "xtls-rprx-vision",
-                "id": "7fb8c4e7-2f8c-40f5-ba5e-d0f70bbd0ffb",
-                "level": 0
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "tcp",
-        "realitySettings": {
-          "allowInsecure": false,
-          "fingerprint": "chrome",
-          "publicKey": "_KTsOFhGnC0W28ZqO8_FApozMp7tJ9cVBTLKLAA_OR0",
-          "serverName": "ru2.sky-vault.top",
-          "shortId": "ae64c9b46bff174a",
-          "show": false
+            "users": [{"encryption": "none", "flow": "xtls-rprx-vision", "id": "7fb8c4e7-2f8c-40f5-ba5e-d0f70bbd0ffb", "level": 0}]
+          }]
         },
-        "security": "reality",
-        "tcpSettings": {
-          "header": {
-            "type": "none"
-          }
+        "streamSettings": {
+          "network": "tcp",
+          "realitySettings": {
+            "allowInsecure": false,
+            "fingerprint": "chrome",
+            "publicKey": "_KTsOFhGnC0W28ZqO8_FApozMp7tJ9cVBTLKLAA_OR0",
+            "serverName": "ru2.sky-vault.top",
+            "shortId": "ae64c9b46bff174a",
+            "show": false
+          },
+          "security": "reality",
+          "tcpSettings": {"header": {"type": "none"}}
         }
-      }
-    },
-    {
-      "tag": "vless-mobile-1",
-      "mux": {
-        "concurrency": -1,
-        "enabled": false
       },
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
+      {"protocol": "freedom", "settings": {"domainStrategy": "UseIP"}, "tag": "direct"},
+      {"protocol": "blackhole", "settings": {"response": {"type": "http"}}, "tag": "block"}
+    ],
+    "remarks": "🇷🇺Россия | 📺Для YouTube и РФ сервисов",
+    "routing": {
+      "domainMatcher": "hybrid",
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {"outboundTag": "direct", "protocol": ["bittorrent"], "type": "field"},
+        {"network": "tcp,udp", "outboundTag": "vless-russia", "type": "field"}
+      ]
+    }
+  },
+  {
+    "dns": {
+      "queryStrategy": "UseIP",
+      "servers": ["https://8.8.8.8/dns-query", "https://1.1.1.1/dns-query"]
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {"auth": "noauth", "udp": true, "userLevel": 8},
+        "sniffing": {"destOverride": ["http", "tls"], "enabled": true, "routeOnly": false},
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {"userLevel": 8},
+        "tag": "http"
+      }
+    ],
+    "log": {"loglevel": "warning"},
+    "outbounds": [
+      {
+        "tag": "vless-mobile-1",
+        "mux": {"concurrency": -1, "enabled": false},
+        "protocol": "vless",
+        "settings": {
+          "vnext": [{
             "address": "st.wb-redir.top",
             "port": 443,
-            "users": [
-              {
-                "encryption": "none",
-                "flow": "xtls-rprx-vision",
-                "id": "7dc7e4c8-c986-42f3-8281-bce2e0cb73f4",
-                "level": 0
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "tcp",
-        "realitySettings": {
-          "allowInsecure": false,
-          "fingerprint": "firefox",
-          "publicKey": "cFceImd3w-OVzIfeiuubhj63QHw1B9quHuD5SGQp8k0",
-          "serverName": "st.wb-redir.top",
-          "shortId": "b8bd6b530e124b20",
-          "show": false
+            "users": [{"encryption": "none", "flow": "xtls-rprx-vision", "id": "7dc7e4c8-c986-42f3-8281-bce2e0cb73f4", "level": 0}]
+          }]
         },
-        "security": "reality",
-        "tcpSettings": {
-          "header": {
-            "type": "none"
-          }
+        "streamSettings": {
+          "network": "tcp",
+          "realitySettings": {
+            "allowInsecure": false,
+            "fingerprint": "firefox",
+            "publicKey": "cFceImd3w-OVzIfeiuubhj63QHw1B9quHuD5SGQp8k0",
+            "serverName": "st.wb-redir.top",
+            "shortId": "b8bd6b530e124b20",
+            "show": false
+          },
+          "security": "reality",
+          "tcpSettings": {"header": {"type": "none"}}
         }
-      }
-    },
-    {
-      "tag": "vless-mobile-2",
-      "mux": {
-        "concurrency": -1,
-        "enabled": false
       },
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
+      {"protocol": "freedom", "settings": {"domainStrategy": "UseIP"}, "tag": "direct"},
+      {"protocol": "blackhole", "settings": {"response": {"type": "http"}}, "tag": "block"}
+    ],
+    "remarks": "🇷🇺Мобильный интернет #1",
+    "routing": {
+      "domainMatcher": "hybrid",
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {"outboundTag": "direct", "protocol": ["bittorrent"], "type": "field"},
+        {"network": "tcp,udp", "outboundTag": "vless-mobile-1", "type": "field"}
+      ]
+    }
+  },
+  {
+    "dns": {
+      "queryStrategy": "UseIP",
+      "servers": ["https://8.8.8.8/dns-query", "https://1.1.1.1/dns-query"]
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {"auth": "noauth", "udp": true, "userLevel": 8},
+        "sniffing": {"destOverride": ["http", "tls"], "enabled": true, "routeOnly": false},
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {"userLevel": 8},
+        "tag": "http"
+      }
+    ],
+    "log": {"loglevel": "warning"},
+    "outbounds": [
+      {
+        "tag": "vless-mobile-2",
+        "mux": {"concurrency": -1, "enabled": false},
+        "protocol": "vless",
+        "settings": {
+          "vnext": [{
             "address": "cdns.wb-redir.top",
             "port": 443,
-            "users": [
-              {
-                "encryption": "none",
-                "id": "7dc7e4c8-c986-42f3-8281-bce2e0cb73f4",
-                "level": 0
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "xhttp",
-        "tlsSettings": {
-          "allowInsecure": false,
-          "fingerprint": "random",
-          "serverName": "cdns.wb-redir.top",
-          "alpn": ["h2", "http/1.1"]
+            "users": [{"encryption": "none", "id": "7dc7e4c8-c986-42f3-8281-bce2e0cb73f4", "level": 0}]
+          }]
         },
-        "security": "tls",
-        "xhttpSettings": {
-          "path": "/api/v1/sync/",
-          "mode": "packet-up",
-          "host": "cdns.wb-redir.top"
+        "streamSettings": {
+          "network": "xhttp",
+          "tlsSettings": {"allowInsecure": false, "fingerprint": "random", "serverName": "cdns.wb-redir.top", "alpn": ["h2", "http/1.1"]},
+          "security": "tls",
+          "xhttpSettings": {"path": "/api/v1/sync/", "mode": "packet-up", "host": "cdns.wb-redir.top"}
         }
-      }
-    },
-    {
-      "tag": "vless-mobile-3",
-      "mux": {
-        "concurrency": -1,
-        "enabled": false
       },
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
+      {"protocol": "freedom", "settings": {"domainStrategy": "UseIP"}, "tag": "direct"},
+      {"protocol": "blackhole", "settings": {"response": {"type": "http"}}, "tag": "block"}
+    ],
+    "remarks": "🇷🇺Мобильный интернет #2",
+    "routing": {
+      "domainMatcher": "hybrid",
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {"outboundTag": "direct", "protocol": ["bittorrent"], "type": "field"},
+        {"network": "tcp,udp", "outboundTag": "vless-mobile-2", "type": "field"}
+      ]
+    }
+  },
+  {
+    "dns": {
+      "queryStrategy": "UseIP",
+      "servers": ["https://8.8.8.8/dns-query", "https://1.1.1.1/dns-query"]
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {"auth": "noauth", "udp": true, "userLevel": 8},
+        "sniffing": {"destOverride": ["http", "tls"], "enabled": true, "routeOnly": false},
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {"userLevel": 8},
+        "tag": "http"
+      }
+    ],
+    "log": {"loglevel": "warning"},
+    "outbounds": [
+      {
+        "tag": "vless-mobile-3",
+        "mux": {"concurrency": -1, "enabled": false},
+        "protocol": "vless",
+        "settings": {
+          "vnext": [{
             "address": "cdn.ya-secure.top",
             "port": 443,
-            "users": [
-              {
-                "encryption": "none",
-                "id": "7dc7e4c8-c986-42f3-8281-bce2e0cb73f4",
-                "level": 0
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "xhttp",
-        "tlsSettings": {
-          "allowInsecure": false,
-          "fingerprint": "firefox",
-          "serverName": "cdn.ya-secure.top",
-          "alpn": ["h2", "http/1.1"]
+            "users": [{"encryption": "none", "id": "7dc7e4c8-c986-42f3-8281-bce2e0cb73f4", "level": 0}]
+          }]
         },
-        "security": "tls",
-        "xhttpSettings": {
-          "path": "/photo/",
-          "mode": "packet-up",
-          "host": "cdn.ya-secure.top"
+        "streamSettings": {
+          "network": "xhttp",
+          "tlsSettings": {"allowInsecure": false, "fingerprint": "firefox", "serverName": "cdn.ya-secure.top", "alpn": ["h2", "http/1.1"]},
+          "security": "tls",
+          "xhttpSettings": {"path": "/photo/", "mode": "packet-up", "host": "cdn.ya-secure.top"}
         }
-      }
-    },
-    {
-      "tag": "vless-mobile-4",
-      "mux": {
-        "concurrency": -1,
-        "enabled": false
       },
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
+      {"protocol": "freedom", "settings": {"domainStrategy": "UseIP"}, "tag": "direct"},
+      {"protocol": "blackhole", "settings": {"response": {"type": "http"}}, "tag": "block"}
+    ],
+    "remarks": "🇷🇺Мобильный интернет #3",
+    "routing": {
+      "domainMatcher": "hybrid",
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {"outboundTag": "direct", "protocol": ["bittorrent"], "type": "field"},
+        {"network": "tcp,udp", "outboundTag": "vless-mobile-3", "type": "field"}
+      ]
+    }
+  },
+  {
+    "dns": {
+      "queryStrategy": "UseIP",
+      "servers": ["https://8.8.8.8/dns-query", "https://1.1.1.1/dns-query"]
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {"auth": "noauth", "udp": true, "userLevel": 8},
+        "sniffing": {"destOverride": ["http", "tls"], "enabled": true, "routeOnly": false},
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {"userLevel": 8},
+        "tag": "http"
+      }
+    ],
+    "log": {"loglevel": "warning"},
+    "outbounds": [
+      {
+        "tag": "vless-mobile-4",
+        "mux": {"concurrency": -1, "enabled": false},
+        "protocol": "vless",
+        "settings": {
+          "vnext": [{
             "address": "cdnvc.ya-secure.top",
             "port": 443,
-            "users": [
-              {
-                "encryption": "none",
-                "id": "7dc7e4c8-c986-42f3-8281-bce2e0cb73f4",
-                "level": 0
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "xhttp",
-        "tlsSettings": {
-          "allowInsecure": false,
-          "fingerprint": "random",
-          "serverName": "cdnvc.ya-secure.top",
-          "alpn": ["h2", "http/1.1"]
+            "users": [{"encryption": "none", "id": "7dc7e4c8-c986-42f3-8281-bce2e0cb73f4", "level": 0}]
+          }]
         },
-        "security": "tls",
-        "xhttpSettings": {
-          "path": "/api/v1/sync/",
-          "mode": "packet-up",
-          "host": "cdnvc.ya-secure.top"
+        "streamSettings": {
+          "network": "xhttp",
+          "tlsSettings": {"allowInsecure": false, "fingerprint": "random", "serverName": "cdnvc.ya-secure.top", "alpn": ["h2", "http/1.1"]},
+          "security": "tls",
+          "xhttpSettings": {"path": "/api/v1/sync/", "mode": "packet-up", "host": "cdnvc.ya-secure.top"}
         }
-      }
-    },
-    {
-      "tag": "vless-mobile-5",
-      "mux": {
-        "concurrency": -1,
-        "enabled": false
       },
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
+      {"protocol": "freedom", "settings": {"domainStrategy": "UseIP"}, "tag": "direct"},
+      {"protocol": "blackhole", "settings": {"response": {"type": "http"}}, "tag": "block"}
+    ],
+    "remarks": "🇷🇺Мобильный интернет #4",
+    "routing": {
+      "domainMatcher": "hybrid",
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {"outboundTag": "direct", "protocol": ["bittorrent"], "type": "field"},
+        {"network": "tcp,udp", "outboundTag": "vless-mobile-4", "type": "field"}
+      ]
+    }
+  },
+  {
+    "dns": {
+      "queryStrategy": "UseIP",
+      "servers": ["https://8.8.8.8/dns-query", "https://1.1.1.1/dns-query"]
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {"auth": "noauth", "udp": true, "userLevel": 8},
+        "sniffing": {"destOverride": ["http", "tls"], "enabled": true, "routeOnly": false},
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {"userLevel": 8},
+        "tag": "http"
+      }
+    ],
+    "log": {"loglevel": "warning"},
+    "outbounds": [
+      {
+        "tag": "vless-mobile-5",
+        "mux": {"concurrency": -1, "enabled": false},
+        "protocol": "vless",
+        "settings": {
+          "vnext": [{
             "address": "st.wb-redir.top",
             "port": 443,
-            "users": [
-              {
-                "encryption": "none",
-                "flow": "xtls-rprx-vision",
-                "id": "7dc7e4c8-c986-42f3-8281-bce2e0cb73f4",
-                "level": 0
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "tcp",
-        "realitySettings": {
-          "allowInsecure": false,
-          "fingerprint": "firefox",
-          "publicKey": "cFceImd3w-OVzIfeiuubhj63QHw1B9quHuD5SGQp8k0",
-          "serverName": "cdn.s3.yandex.net",
-          "shortId": "b8bd6b530e124b20",
-          "show": false
+            "users": [{"encryption": "none", "flow": "xtls-rprx-vision", "id": "7dc7e4c8-c986-42f3-8281-bce2e0cb73f4", "level": 0}]
+          }]
         },
-        "security": "reality",
-        "tcpSettings": {
-          "header": {
-            "type": "none"
-          }
-        }
-      }
-    },
-    {
-      "protocol": "freedom",
-      "settings": {
-        "domainStrategy": "UseIP"
-      },
-      "tag": "direct"
-    },
-    {
-      "protocol": "blackhole",
-      "settings": {
-        "response": {
-          "type": "http"
+        "streamSettings": {
+          "network": "tcp",
+          "realitySettings": {
+            "allowInsecure": false,
+            "fingerprint": "firefox",
+            "publicKey": "cFceImd3w-OVzIfeiuubhj63QHw1B9quHuD5SGQp8k0",
+            "serverName": "cdn.s3.yandex.net",
+            "shortId": "b8bd6b530e124b20",
+            "show": false
+          },
+          "security": "reality",
+          "tcpSettings": {"header": {"type": "none"}}
         }
       },
-      "tag": "block"
-    }
-  ],
-  "remarks": "Secure.VPN",
-  "burstObservatory": {
-    "subjectSelector": [
-      "vless-europe",
-      "vless-europe-enhanced",
-      "vless-netherlands",
-      "vless-poland",
-      "vless-france",
-      "vless-turkey",
-      "vless-germany-gaming",
-      "vless-estonia",
-      "vless-usa-ai",
-      "vless-moldova",
-      "vless-finland",
-      "vless-kazakhstan",
-      "vless-russia",
-      "vless-mobile-1",
-      "vless-mobile-2",
-      "vless-mobile-3",
-      "vless-mobile-4",
-      "vless-mobile-5"
+      {"protocol": "freedom", "settings": {"domainStrategy": "UseIP"}, "tag": "direct"},
+      {"protocol": "blackhole", "settings": {"response": {"type": "http"}}, "tag": "block"}
     ],
-    "pingConfig": {
-      "destination": "https://www.gstatic.com/generate_204",
-      "interval": "5m",
-      "timeout": "3s",
-      "sampling": 3
+    "remarks": "🇷🇺Мобильный интернет #5",
+    "routing": {
+      "domainMatcher": "hybrid",
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {"outboundTag": "direct", "protocol": ["bittorrent"], "type": "field"},
+        {"network": "tcp,udp", "outboundTag": "vless-mobile-5", "type": "field"}
+      ]
     }
-  },
-  "routing": {
-    "domainMatcher": "hybrid",
-    "domainStrategy": "IPIfNonMatch",
-    "balancers": [
-      {
-        "tag": "auto-wifi",
-        "selector": [
-          "vless-europe",
-          "vless-europe-enhanced",
-          "vless-netherlands",
-          "vless-poland",
-          "vless-france",
-          "vless-turkey",
-          "vless-germany-gaming",
-          "vless-estonia",
-          "vless-usa-ai",
-          "vless-moldova",
-          "vless-finland",
-          "vless-kazakhstan",
-          "vless-russia"
-        ],
-        "fallbackTag": "vless-europe",
-        "strategy": {
-          "type": "leastLoad",
-          "settings": {
-            "expected": 3,
-            "baselines": ["120ms", "250ms", "500ms"]
-          }
-        }
-      },
-      {
-        "tag": "auto-lte",
-        "selector": [
-          "vless-mobile-1",
-          "vless-mobile-2",
-          "vless-mobile-3",
-          "vless-mobile-4",
-          "vless-mobile-5"
-        ],
-        "fallbackTag": "vless-mobile-1",
-        "strategy": {
-          "type": "leastLoad",
-          "settings": {
-            "expected": 2,
-            "baselines": ["150ms", "300ms", "600ms"]
-          }
-        }
-      }
-    ],
-    "rules": [
-      {
-        "outboundTag": "direct",
-        "protocol": ["bittorrent"],
-        "type": "field"
-      },
-      {
-        "outboundTag": "direct",
-        "ip": [
-          "5.61.16.0/21",
-          "17.0.0.0/8",
-          "46.226.122.0/24",
-          "85.198.76.0/22",
-          "87.240.128.0/18",
-          "91.212.64.0/24",
-          "91.223.63.0/24",
-          "91.223.93.0/24",
-          "91.230.107.0/24",
-          "93.186.224.0/21",
-          "95.213.0.0/17",
-          "176.114.120.0/21",
-          "185.16.148.0/22",
-          "185.16.244.0/22",
-          "185.32.248.0/22",
-          "185.62.200.0/23",
-          "185.62.202.0/24",
-          "185.73.192.0/22",
-          "185.89.12.0/24",
-          "185.89.14.0/23",
-          "185.138.252.0/22",
-          "185.179.144.0/22",
-          "193.200.10.0/23",
-          "194.1.214.0/24",
-          "195.34.20.0/23",
-          "195.242.82.0/23",
-          "213.184.155.0/24",
-          "213.184.156.0/22",
-          "217.12.96.0/21",
-          "217.12.104.0/23",
-          "217.12.106.0/24",
-          "217.12.110.0/24",
-          "217.14.48.0/20",
-          "217.20.144.0/20"
-        ],
-        "type": "field"
-      },
-      {
-        "domain": [
-          "domain:go.polect.net",
-          "domain:ru",
-          "domain:xn--p1ai",
-          "geosite:category-ru",
-          "domain:1cfresh.com",
-          "domain:2gis.by",
-          "domain:2gis.com",
-          "domain:2gis.com.cy",
-          "domain:alfa-bank.com",
-          "domain:alfabank.com",
-          "domain:alfafinance.biz",
-          "domain:alfafx.com",
-          "domain:alfaprivate.com",
-          "domain:beta-bank.com",
-          "domain:gazprombank.tech",
-          "domain:investalfabank.com",
-          "domain:moex.com",
-          "domain:tbank-online.com",
-          "domain:tochka.com",
-          "domain:tochka-tech.com",
-          "domain:vtb.com",
-          "domain:vtb.digital",
-          "domain:vtb.promo",
-          "domain:vtb24.com",
-          "domain:vtbrussia.com",
-          "domain:avito.st",
-          "domain:nspk.ru",
-          "domain:lenta.com",
-          "domain:megamarket.tech",
-          "domain:okko.tv",
-          "domain:ozonusercontent.com",
-          "domain:premier.one",
-          "domain:wildberries.by",
-          "domain:wbstatic.net",
-          "domain:youla.io",
-          "domain:userapi.com",
-          "domain:vk.com",
-          "domain:vk-portal.net",
-          "domain:yads.tech",
-          "domain:yandex",
-          "domain:yandex-bank.net",
-          "domain:yandex.aero",
-          "domain:yandex.az",
-          "domain:yandex.by",
-          "domain:yandex.cloud",
-          "domain:yandex.co.il",
-          "domain:yandex.com",
-          "domain:yandex.com.ge",
-          "domain:yandex.eu",
-          "domain:yandex.fr",
-          "domain:yandex.jobs",
-          "domain:yandex.kg",
-          "domain:yandex.kz",
-          "domain:yandex.net",
-          "domain:yandex.org",
-          "domain:yandexadexchange.net",
-          "domain:yandexcloud.net",
-          "domain:yandexcom.net",
-          "domain:yandexmetrica.com",
-          "domain:yandexwebcache.net",
-          "domain:yandexwebcache.org",
-          "domain:yastat.net",
-          "domain:yastatic.net",
-          "domain:gismeteo.com",
-          "domain:lmru.tech",
-          "domain:mradx.net",
-          "domain:tildaapi.com",
-          "domain:kontur.host"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "network": "tcp,udp",
-        "balancerTag": "auto-wifi",
-        "type": "field"
-      }
-    ]
-  },
-  "profile-title": "Secure.VPN",
-  "profile-update-interval": 1,
-  "announce": "На всех серверах YouTube работает без рекламы!",
-  "servers": [
-    {
-      "tag": "auto-wifi",
-      "remarks": "🇪🇺⚡ Авто-обход | WI-FI",
-      "description": "Автовыбор сервера для WI-FI"
-    },
-    {
-      "tag": "auto-lte",
-      "remarks": "🇸🇴📱 Авто-обход | LTE",
-      "description": "Автовыбор сервера для LTE"
-    },
-    {
-      "tag": "vless-europe",
-      "remarks": "🇪🇺Европа",
-      "description": "⚡ Быстрый · 5 Гбит/с"
-    },
-    {
-      "tag": "vless-europe-enhanced",
-      "remarks": "🇪🇺Европа | Усиленная",
-      "description": "Быстрый. Через Россию"
-    },
-    {
-      "tag": "vless-netherlands",
-      "remarks": "🇳🇱Нидерланды",
-      "description": "Если не работают др."
-    },
-    {
-      "tag": "vless-poland",
-      "remarks": "🇵🇱Польша",
-      "description": "⚡ Быстрый · 10 Гбит/с"
-    },
-    {
-      "tag": "vless-france",
-      "remarks": "🇫🇷Франция",
-      "description": "⚡ Быстрый · 10 Гбит/с"
-    },
-    {
-      "tag": "vless-turkey",
-      "remarks": "🇹🇷Турция",
-      "description": "⚡ Быстрый · 10 Гбит/с"
-    },
-    {
-      "tag": "vless-germany-gaming",
-      "remarks": "🇩🇪Германия | 🎮Игровой",
-      "description": "🎮 Для мобильных игр"
-    },
-    {
-      "tag": "vless-estonia",
-      "remarks": "🇪🇪Эстония",
-      "description": "⚡ Быстрый · 10 Гбит/с"
-    },
-    {
-      "tag": "vless-usa-ai",
-      "remarks": "🇺🇸США | 🤖Нейросети",
-      "description": "🤖Доступ к Gemini и др."
-    },
-    {
-      "tag": "vless-moldova",
-      "remarks": "🇲🇩Молдова",
-      "description": "🏴‍☠️ Торренты нежелательны."
-    },
-    {
-      "tag": "vless-finland",
-      "remarks": "🇫🇮Финляндия",
-      "description": "⚡ Быстрый · 10 Гбит/с"
-    },
-    {
-      "tag": "vless-kazakhstan",
-      "remarks": "🇰🇿Казахстан",
-      "description": "⚡ Быстрый · 5 Гбит/с"
-    },
-    {
-      "tag": "vless-russia",
-      "remarks": "🇷🇺Россия",
-      "description": "📺Для YouTube и РФ сервисов"
-    },
-    {
-      "tag": "vless-mobile-1",
-      "remarks": "🇷🇺Мобильный интернет #1",
-      "description": ""
-    },
-    {
-      "tag": "vless-mobile-2",
-      "remarks": "🇷🇺Мобильный интернет #2",
-      "description": ""
-    },
-    {
-      "tag": "vless-mobile-3",
-      "remarks": "🇷🇺Мобильный интернет #3",
-      "description": ""
-    },
-    {
-      "tag": "vless-mobile-4",
-      "remarks": "🇷🇺Мобильный интернет #4",
-      "description": ""
-    },
-    {
-      "tag": "vless-mobile-5",
-      "remarks": "🇷🇺Мобильный интернет #5",
-      "description": ""
-    }
-  ]
-}
+  }
+]
