@@ -1,8 +1,13 @@
 {
   "dns": {
+    "queryStrategy": "UseIP",
     "servers": [
       "https://8.8.8.8/dns-query",
-      "https://1.1.1.1/dns-query"
+      "https://8.8.4.4/dns-query",
+      "https://1.1.1.1/dns-query",
+      "https://1.0.0.1/dns-query",
+      "77.88.8.8",
+      "77.88.8.1"
     ]
   },
   "inbounds": [
@@ -17,7 +22,8 @@
       },
       "sniffing": {
         "destOverride": ["http", "tls"],
-        "enabled": true
+        "enabled": true,
+        "routeOnly": false
       },
       "tag": "socks"
     },
@@ -797,7 +803,12 @@
       "vless-moldova",
       "vless-finland",
       "vless-kazakhstan",
-      "vless-russia"
+      "vless-russia",
+      "vless-mobile-1",
+      "vless-mobile-2",
+      "vless-mobile-3",
+      "vless-mobile-4",
+      "vless-mobile-5"
     ],
     "pingConfig": {
       "destination": "https://www.gstatic.com/generate_204",
