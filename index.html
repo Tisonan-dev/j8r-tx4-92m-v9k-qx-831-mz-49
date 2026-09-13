@@ -15,7 +15,12 @@
       "balancers": [
         {
           "tag": "auto-wifi",
-          "selector": ["proxy-wifi-"],
+          "selector": [
+            "proxy-wifi-1", "proxy-wifi-2", "proxy-wifi-3", "proxy-wifi-4",
+            "proxy-wifi-5", "proxy-wifi-6", "proxy-wifi-7", "proxy-wifi-8",
+            "proxy-wifi-9", "proxy-wifi-10", "proxy-wifi-11", "proxy-wifi-12",
+            "proxy-wifi-13", "proxy-wifi-14"
+          ],
           "strategy": { "type": "random" },
           "fallbackTag": "proxy-wifi-1"
         }
@@ -57,21 +62,21 @@
       "enabled": true,
       "probeURL": "http://www.msftconnecttest.com/connecttest.txt",
       "probeInterval": "3s",
-      "subjectSelector": ["proxy-wifi-"]
+      "subjectSelector": [
+        "proxy-wifi-1", "proxy-wifi-2", "proxy-wifi-3", "proxy-wifi-4",
+        "proxy-wifi-5", "proxy-wifi-6", "proxy-wifi-7", "proxy-wifi-8",
+        "proxy-wifi-9", "proxy-wifi-10", "proxy-wifi-11", "proxy-wifi-12",
+        "proxy-wifi-13", "proxy-wifi-14"
+      ]
     },
     "remarks": "🇪🇺Авто-выбор | WI-FI",
     "meta": { "serverDescription": "Авто-выбор для WI-FI" }
   },
   {
-    "dns": {
-      "servers": ["1.1.1.1", "1.0.0.1"],
-      "queryStrategy": "UseIP"
-    },
+    "dns": { "servers": ["1.1.1.1", "1.0.0.1"], "queryStrategy": "UseIP" },
     "log": { "loglevel": "warning" },
     "routing": {
-      "rules": [
-        { "type": "field", "network": "tcp,udp", "outboundTag": "proxy" }
-      ],
+      "rules": [{ "type": "field", "network": "tcp,udp", "outboundTag": "proxy" }],
       "domainMatcher": "hybrid",
       "domainStrategy": "IPIfNonMatch"
     },
@@ -80,29 +85,7 @@
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "mellifluous.femboy.click",
-              "port": 443,
-              "users": [{ "id": "cd7172ff-475f-421e-a9d8-b42fe606bade", "encryption": "none", "flow": "xtls-rprx-vision" }]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "security": "reality",
-          "realitySettings": {
-            "serverName": "mellifluous.femboy.click",
-            "publicKey": "OhRyLpJx6fMqQoDOaHnUCOEY4zt65e4Yf__SjtjxBQ4",
-            "shortId": "9b8918c790afb41c",
-            "fingerprint": "firefox"
-          }
-        }
-      },
+      { "tag": "proxy", "protocol": "vless", "settings": { "vnext": [{ "address": "mellifluous.femboy.click", "port": 443, "users": [{ "id": "cd7172ff-475f-421e-a9d8-b42fe606bade", "encryption": "none", "flow": "xtls-rprx-vision" }] }] }, "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "mellifluous.femboy.click", "publicKey": "OhRyLpJx6fMqQoDOaHnUCOEY4zt65e4Yf__SjtjxBQ4", "shortId": "9b8918c790afb41c", "fingerprint": "firefox" } } },
       { "tag": "direct", "protocol": "freedom", "settings": {} },
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
@@ -122,29 +105,7 @@
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "petrichor.femboy.click",
-              "port": 443,
-              "users": [{ "id": "cd7172ff-475f-421e-a9d8-b42fe606bade", "encryption": "none", "flow": "xtls-rprx-vision" }]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "security": "reality",
-          "realitySettings": {
-            "serverName": "petrichor.femboy.click",
-            "publicKey": "G0YGuGNRWHA15sL6EBMhlDrLjzStI58bteKJKKepdgI",
-            "shortId": "8bc3efd7af4f67f4",
-            "fingerprint": "firefox"
-          }
-        }
-      },
+      { "tag": "proxy", "protocol": "vless", "settings": { "vnext": [{ "address": "petrichor.femboy.click", "port": 443, "users": [{ "id": "cd7172ff-475f-421e-a9d8-b42fe606bade", "encryption": "none", "flow": "xtls-rprx-vision" }] }] }, "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "petrichor.femboy.click", "publicKey": "G0YGuGNRWHA15sL6EBMhlDrLjzStI58bteKJKKepdgI", "shortId": "8bc3efd7af4f67f4", "fingerprint": "firefox" } } },
       { "tag": "direct", "protocol": "freedom", "settings": {} },
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
@@ -164,29 +125,7 @@
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "ephemeral.femboy.click",
-              "port": 443,
-              "users": [{ "id": "cd7172ff-475f-421e-a9d8-b42fe606bade", "encryption": "none", "flow": "xtls-rprx-vision" }]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "security": "reality",
-          "realitySettings": {
-            "serverName": "ephemeral.femboy.click",
-            "publicKey": "Dz775umUVQjgkSOXY_Cg452HvhxUUZznWj9gabSbtBo",
-            "shortId": "6bcd6c8e0a6193ea",
-            "fingerprint": "firefox"
-          }
-        }
-      },
+      { "tag": "proxy", "protocol": "vless", "settings": { "vnext": [{ "address": "ephemeral.femboy.click", "port": 443, "users": [{ "id": "cd7172ff-475f-421e-a9d8-b42fe606bade", "encryption": "none", "flow": "xtls-rprx-vision" }] }] }, "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "ephemeral.femboy.click", "publicKey": "Dz775umUVQjgkSOXY_Cg452HvhxUUZznWj9gabSbtBo", "shortId": "6bcd6c8e0a6193ea", "fingerprint": "firefox" } } },
       { "tag": "direct", "protocol": "freedom", "settings": {} },
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
@@ -206,29 +145,7 @@
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "susurrus.femboy.click",
-              "port": 443,
-              "users": [{ "id": "cd7172ff-475f-421e-a9d8-b42fe606bade", "encryption": "none", "flow": "xtls-rprx-vision" }]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "security": "reality",
-          "realitySettings": {
-            "serverName": "susurrus.femboy.click",
-            "publicKey": "B_i9Oai5Q1EMExCWAC0yDeypGLEynRkj-HjqZxw3sjU",
-            "shortId": "cb386307158bf2fa",
-            "fingerprint": "firefox"
-          }
-        }
-      },
+      { "tag": "proxy", "protocol": "vless", "settings": { "vnext": [{ "address": "susurrus.femboy.click", "port": 443, "users": [{ "id": "cd7172ff-475f-421e-a9d8-b42fe606bade", "encryption": "none", "flow": "xtls-rprx-vision" }] }] }, "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "susurrus.femboy.click", "publicKey": "B_i9Oai5Q1EMExCWAC0yDeypGLEynRkj-HjqZxw3sjU", "shortId": "cb386307158bf2fa", "fingerprint": "firefox" } } },
       { "tag": "direct", "protocol": "freedom", "settings": {} },
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
@@ -248,29 +165,7 @@
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "meadow.femboy.click",
-              "port": 443,
-              "users": [{ "id": "cd7172ff-475f-421e-a9d8-b42fe606bade", "encryption": "none", "flow": "xtls-rprx-vision" }]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "security": "reality",
-          "realitySettings": {
-            "serverName": "meadow.femboy.click",
-            "publicKey": "6WZkkrMjgD2SSruBsE65YlbXfCrPPXw86pPf8wk0QRg",
-            "shortId": "f6195c0ddc072239",
-            "fingerprint": "firefox"
-          }
-        }
-      },
+      { "tag": "proxy", "protocol": "vless", "settings": { "vnext": [{ "address": "meadow.femboy.click", "port": 443, "users": [{ "id": "cd7172ff-475f-421e-a9d8-b42fe606bade", "encryption": "none", "flow": "xtls-rprx-vision" }] }] }, "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "meadow.femboy.click", "publicKey": "6WZkkrMjgD2SSruBsE65YlbXfCrPPXw86pPf8wk0QRg", "shortId": "f6195c0ddc072239", "fingerprint": "firefox" } } },
       { "tag": "direct", "protocol": "freedom", "settings": {} },
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
@@ -290,29 +185,7 @@
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "peregrine.femboy.click",
-              "port": 443,
-              "users": [{ "id": "cd7172ff-475f-421e-a9d8-b42fe606bade", "encryption": "none", "flow": "xtls-rprx-vision" }]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "security": "reality",
-          "realitySettings": {
-            "serverName": "peregrine.femboy.click",
-            "publicKey": "0BocpnNJz-HHSNjd27VNBPN2C6gU-JfyPHb6C4aZLgo",
-            "shortId": "ef8ff0d0c03144d3",
-            "fingerprint": "firefox"
-          }
-        }
-      },
+      { "tag": "proxy", "protocol": "vless", "settings": { "vnext": [{ "address": "peregrine.femboy.click", "port": 443, "users": [{ "id": "cd7172ff-475f-421e-a9d8-b42fe606bade", "encryption": "none", "flow": "xtls-rprx-vision" }] }] }, "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "peregrine.femboy.click", "publicKey": "0BocpnNJz-HHSNjd27VNBPN2C6gU-JfyPHb6C4aZLgo", "shortId": "ef8ff0d0c03144d3", "fingerprint": "firefox" } } },
       { "tag": "direct", "protocol": "freedom", "settings": {} },
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
@@ -332,29 +205,7 @@
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "harbor.femboy.click",
-              "port": 443,
-              "users": [{ "id": "cd7172ff-475f-421e-a9d8-b42fe606bade", "encryption": "none", "flow": "xtls-rprx-vision" }]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "security": "reality",
-          "realitySettings": {
-            "serverName": "harbor.femboy.click",
-            "publicKey": "K8RyR0K9EN7qFvp15OAe54ykDXxqcoxpV0wpcMFkSSc",
-            "shortId": "050dfbecaf1b16e5",
-            "fingerprint": "firefox"
-          }
-        }
-      },
+      { "tag": "proxy", "protocol": "vless", "settings": { "vnext": [{ "address": "harbor.femboy.click", "port": 443, "users": [{ "id": "cd7172ff-475f-421e-a9d8-b42fe606bade", "encryption": "none", "flow": "xtls-rprx-vision" }] }] }, "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "harbor.femboy.click", "publicKey": "K8RyR0K9EN7qFvp15OAe54ykDXxqcoxpV0wpcMFkSSc", "shortId": "050dfbecaf1b16e5", "fingerprint": "firefox" } } },
       { "tag": "direct", "protocol": "freedom", "settings": {} },
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
@@ -374,29 +225,7 @@
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "ember.femboy.click",
-              "port": 443,
-              "users": [{ "id": "cd7172ff-475f-421e-a9d8-b42fe606bade", "encryption": "none", "flow": "xtls-rprx-vision" }]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "security": "reality",
-          "realitySettings": {
-            "serverName": "ember.femboy.click",
-            "publicKey": "clRMH4Zw--WwMQ6e4gBl0EoRDdKtYurqWc6Q6b81m3U",
-            "shortId": "ed48697573893042",
-            "fingerprint": "firefox"
-          }
-        }
-      },
+      { "tag": "proxy", "protocol": "vless", "settings": { "vnext": [{ "address": "ember.femboy.click", "port": 443, "users": [{ "id": "cd7172ff-475f-421e-a9d8-b42fe606bade", "encryption": "none", "flow": "xtls-rprx-vision" }] }] }, "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "ember.femboy.click", "publicKey": "clRMH4Zw--WwMQ6e4gBl0EoRDdKtYurqWc6Q6b81m3U", "shortId": "ed48697573893042", "fingerprint": "firefox" } } },
       { "tag": "direct", "protocol": "freedom", "settings": {} },
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
@@ -416,29 +245,7 @@
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "summit.femboy.click",
-              "port": 443,
-              "users": [{ "id": "cd7172ff-475f-421e-a9d8-b42fe606bade", "encryption": "none", "flow": "xtls-rprx-vision" }]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "security": "reality",
-          "realitySettings": {
-            "serverName": "summit.femboy.click",
-            "publicKey": "pJVU9bW9B2qDDJmwo9Fmx-0tn3TcXyYh0DvsG8caSAo",
-            "shortId": "295943b2794ed1ba",
-            "fingerprint": "firefox"
-          }
-        }
-      },
+      { "tag": "proxy", "protocol": "vless", "settings": { "vnext": [{ "address": "summit.femboy.click", "port": 443, "users": [{ "id": "cd7172ff-475f-421e-a9d8-b42fe606bade", "encryption": "none", "flow": "xtls-rprx-vision" }] }] }, "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "summit.femboy.click", "publicKey": "pJVU9bW9B2qDDJmwo9Fmx-0tn3TcXyYh0DvsG8caSAo", "shortId": "295943b2794ed1ba", "fingerprint": "firefox" } } },
       { "tag": "direct", "protocol": "freedom", "settings": {} },
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
@@ -458,30 +265,7 @@
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "lt.i-love-russia.online",
-              "port": 443,
-              "users": [{ "id": "cd7172ff-475f-421e-a9d8-b42fe606bade", "encryption": "none", "flow": "xtls-rprx-vision" }]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "security": "reality",
-          "realitySettings": {
-            "serverName": "lt.i-love-russia.online",
-            "publicKey": "ThYiOQmlRYp3vrb_MAshWmjSxwOOYcstJusgIiiopHY",
-            "shortId": "1b4e086bf0a1b1f4",
-            "spiderX": "/",
-            "fingerprint": "firefox"
-          }
-        }
-      },
+      { "tag": "proxy", "protocol": "vless", "settings": { "vnext": [{ "address": "lt.i-love-russia.online", "port": 443, "users": [{ "id": "cd7172ff-475f-421e-a9d8-b42fe606bade", "encryption": "none", "flow": "xtls-rprx-vision" }] }] }, "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "lt.i-love-russia.online", "publicKey": "ThYiOQmlRYp3vrb_MAshWmjSxwOOYcstJusgIiiopHY", "shortId": "1b4e086bf0a1b1f4", "spiderX": "/", "fingerprint": "firefox" } } },
       { "tag": "direct", "protocol": "freedom", "settings": {} },
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
@@ -501,29 +285,7 @@
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "velvet.femboy.click",
-              "port": 443,
-              "users": [{ "id": "cd7172ff-475f-421e-a9d8-b42fe606bade", "encryption": "none", "flow": "xtls-rprx-vision" }]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "security": "reality",
-          "realitySettings": {
-            "serverName": "velvet.femboy.click",
-            "publicKey": "yvgVlbf2FiIDfO1cgIylKGrVrhjbYmj0xe7mya4KniA",
-            "shortId": "84428906bb062ed9",
-            "fingerprint": "firefox"
-          }
-        }
-      },
+      { "tag": "proxy", "protocol": "vless", "settings": { "vnext": [{ "address": "velvet.femboy.click", "port": 443, "users": [{ "id": "cd7172ff-475f-421e-a9d8-b42fe606bade", "encryption": "none", "flow": "xtls-rprx-vision" }] }] }, "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "velvet.femboy.click", "publicKey": "yvgVlbf2FiIDfO1cgIylKGrVrhjbYmj0xe7mya4KniA", "shortId": "84428906bb062ed9", "fingerprint": "firefox" } } },
       { "tag": "direct", "protocol": "freedom", "settings": {} },
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
@@ -543,29 +305,7 @@
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "grove.femboy.click",
-              "port": 443,
-              "users": [{ "id": "cd7172ff-475f-421e-a9d8-b42fe606bade", "encryption": "none", "flow": "xtls-rprx-vision" }]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "security": "reality",
-          "realitySettings": {
-            "serverName": "grove.femboy.click",
-            "publicKey": "cNDOtw38xwqf4-4nWc3veJw0TRUEJGq1xA1pSzvrLk4",
-            "shortId": "18a1add3e6c5f0fe",
-            "fingerprint": "firefox"
-          }
-        }
-      },
+      { "tag": "proxy", "protocol": "vless", "settings": { "vnext": [{ "address": "grove.femboy.click", "port": 443, "users": [{ "id": "cd7172ff-475f-421e-a9d8-b42fe606bade", "encryption": "none", "flow": "xtls-rprx-vision" }] }] }, "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "grove.femboy.click", "publicKey": "cNDOtw38xwqf4-4nWc3veJw0TRUEJGq1xA1pSzvrLk4", "shortId": "18a1add3e6c5f0fe", "fingerprint": "firefox" } } },
       { "tag": "direct", "protocol": "freedom", "settings": {} },
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
@@ -585,29 +325,7 @@
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "lacuna.femboy.click",
-              "port": 443,
-              "users": [{ "id": "cd7172ff-475f-421e-a9d8-b42fe606bade", "encryption": "none", "flow": "xtls-rprx-vision" }]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "security": "reality",
-          "realitySettings": {
-            "serverName": "lacuna.femboy.click",
-            "publicKey": "LEQw3pY4J0vxf6RhCC8OKwDVCdtUxVzhQPrMJy757gs",
-            "shortId": "47207eb259e33daf",
-            "fingerprint": "firefox"
-          }
-        }
-      },
+      { "tag": "proxy", "protocol": "vless", "settings": { "vnext": [{ "address": "lacuna.femboy.click", "port": 443, "users": [{ "id": "cd7172ff-475f-421e-a9d8-b42fe606bade", "encryption": "none", "flow": "xtls-rprx-vision" }] }] }, "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "lacuna.femboy.click", "publicKey": "LEQw3pY4J0vxf6RhCC8OKwDVCdtUxVzhQPrMJy757gs", "shortId": "47207eb259e33daf", "fingerprint": "firefox" } } },
       { "tag": "direct", "protocol": "freedom", "settings": {} },
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
@@ -627,17 +345,7 @@
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "hysteria",
-        "settings": { "address": "willow.femboy.click", "port": 443, "version": 2 },
-        "streamSettings": {
-          "network": "hysteria",
-          "hysteriaSettings": { "version": 2, "auth": "cd7172ff-475f-421e-a9d8-b42fe606bade" },
-          "security": "tls",
-          "tlsSettings": { "serverName": "willow.femboy.click", "enableSessionResumption": false, "fingerprint": "firefox", "alpn": ["h3"] }
-        }
-      },
+      { "tag": "proxy", "protocol": "hysteria", "settings": { "address": "willow.femboy.click", "port": 443, "version": 2 }, "streamSettings": { "network": "hysteria", "hysteriaSettings": { "version": 2, "auth": "cd7172ff-475f-421e-a9d8-b42fe606bade" }, "security": "tls", "tlsSettings": { "serverName": "willow.femboy.click", "enableSessionResumption": false, "fingerprint": "firefox", "alpn": ["h3"] } } },
       { "tag": "direct", "protocol": "freedom", "settings": {} },
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
@@ -657,17 +365,7 @@
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "hysteria",
-        "settings": { "address": "harbor.femboy.click", "port": 443, "version": 2 },
-        "streamSettings": {
-          "network": "hysteria",
-          "hysteriaSettings": { "version": 2, "auth": "cd7172ff-475f-421e-a9d8-b42fe606bade" },
-          "security": "tls",
-          "tlsSettings": { "serverName": "harbor.femboy.click", "enableSessionResumption": false, "fingerprint": "firefox", "alpn": ["h3"] }
-        }
-      },
+      { "tag": "proxy", "protocol": "hysteria", "settings": { "address": "harbor.femboy.click", "port": 443, "version": 2 }, "streamSettings": { "network": "hysteria", "hysteriaSettings": { "version": 2, "auth": "cd7172ff-475f-421e-a9d8-b42fe606bade" }, "security": "tls", "tlsSettings": { "serverName": "harbor.femboy.click", "enableSessionResumption": false, "fingerprint": "firefox", "alpn": ["h3"] } } },
       { "tag": "direct", "protocol": "freedom", "settings": {} },
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
@@ -687,17 +385,7 @@
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "hysteria",
-        "settings": { "address": "susurrus.femboy.click", "port": 443, "version": 2 },
-        "streamSettings": {
-          "network": "hysteria",
-          "hysteriaSettings": { "version": 2, "auth": "cd7172ff-475f-421e-a9d8-b42fe606bade" },
-          "security": "tls",
-          "tlsSettings": { "serverName": "susurrus.femboy.click", "enableSessionResumption": false, "fingerprint": "firefox", "alpn": ["h3"] }
-        }
-      },
+      { "tag": "proxy", "protocol": "hysteria", "settings": { "address": "susurrus.femboy.click", "port": 443, "version": 2 }, "streamSettings": { "network": "hysteria", "hysteriaSettings": { "version": 2, "auth": "cd7172ff-475f-421e-a9d8-b42fe606bade" }, "security": "tls", "tlsSettings": { "serverName": "susurrus.femboy.click", "enableSessionResumption": false, "fingerprint": "firefox", "alpn": ["h3"] } } },
       { "tag": "direct", "protocol": "freedom", "settings": {} },
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
@@ -717,17 +405,7 @@
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "hysteria",
-        "settings": { "address": "petrichor.femboy.click", "port": 443, "version": 2 },
-        "streamSettings": {
-          "network": "hysteria",
-          "hysteriaSettings": { "version": 2, "auth": "cd7172ff-475f-421e-a9d8-b42fe606bade" },
-          "security": "tls",
-          "tlsSettings": { "serverName": "petrichor.femboy.click", "enableSessionResumption": false, "fingerprint": "firefox", "alpn": ["h3"] }
-        }
-      },
+      { "tag": "proxy", "protocol": "hysteria", "settings": { "address": "petrichor.femboy.click", "port": 443, "version": 2 }, "streamSettings": { "network": "hysteria", "hysteriaSettings": { "version": 2, "auth": "cd7172ff-475f-421e-a9d8-b42fe606bade" }, "security": "tls", "tlsSettings": { "serverName": "petrichor.femboy.click", "enableSessionResumption": false, "fingerprint": "firefox", "alpn": ["h3"] } } },
       { "tag": "direct", "protocol": "freedom", "settings": {} },
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
@@ -747,25 +425,7 @@
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "friendlynode.site",
-              "port": 443,
-              "users": [{ "id": "cd7172ff-475f-421e-a9d8-b42fe606bade", "encryption": "none", "flow": "" }]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "ws",
-          "wsSettings": { "path": "/stream/751394/socket", "host": "friendlynode.site", "headers": {} },
-          "security": "tls",
-          "tlsSettings": { "serverName": "friendlynode.site", "enableSessionResumption": false, "fingerprint": "firefox", "alpn": ["http/1.1"] }
-        }
-      },
+      { "tag": "proxy", "protocol": "vless", "settings": { "vnext": [{ "address": "friendlynode.site", "port": 443, "users": [{ "id": "cd7172ff-475f-421e-a9d8-b42fe606bade", "encryption": "none", "flow": "" }] }] }, "streamSettings": { "network": "ws", "wsSettings": { "path": "/stream/751394/socket", "host": "friendlynode.site", "headers": {} }, "security": "tls", "tlsSettings": { "serverName": "friendlynode.site", "enableSessionResumption": false, "fingerprint": "firefox", "alpn": ["http/1.1"] } } },
       { "tag": "direct", "protocol": "freedom", "settings": {} },
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
@@ -785,25 +445,7 @@
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "friendlynode.site",
-              "port": 443,
-              "users": [{ "id": "cd7172ff-475f-421e-a9d8-b42fe606bade", "encryption": "none", "flow": "" }]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "xhttp",
-          "xhttpSettings": { "mode": "packet-up", "host": "friendlynode.site", "path": "/api/v2/pen7c33" },
-          "security": "tls",
-          "tlsSettings": { "serverName": "friendlynode.site", "enableSessionResumption": false, "fingerprint": "firefox", "alpn": ["h2", "http/1.1"] }
-        }
-      },
+      { "tag": "proxy", "protocol": "vless", "settings": { "vnext": [{ "address": "friendlynode.site", "port": 443, "users": [{ "id": "cd7172ff-475f-421e-a9d8-b42fe606bade", "encryption": "none", "flow": "" }] }] }, "streamSettings": { "network": "xhttp", "xhttpSettings": { "mode": "packet-up", "host": "friendlynode.site", "path": "/api/v2/pen7c33" }, "security": "tls", "tlsSettings": { "serverName": "friendlynode.site", "enableSessionResumption": false, "fingerprint": "firefox", "alpn": ["h2", "http/1.1"] } } },
       { "tag": "direct", "protocol": "freedom", "settings": {} },
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
@@ -823,25 +465,7 @@
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "friendlynode.ru",
-              "port": 443,
-              "users": [{ "id": "cd7172ff-475f-421e-a9d8-b42fe606bade", "encryption": "none", "flow": "" }]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "ws",
-          "wsSettings": { "path": "/stream/751394/socket", "host": "friendlynode.ru", "headers": {} },
-          "security": "tls",
-          "tlsSettings": { "serverName": "friendlynode.ru", "enableSessionResumption": false, "fingerprint": "firefox", "alpn": ["http/1.1"] }
-        }
-      },
+      { "tag": "proxy", "protocol": "vless", "settings": { "vnext": [{ "address": "friendlynode.ru", "port": 443, "users": [{ "id": "cd7172ff-475f-421e-a9d8-b42fe606bade", "encryption": "none", "flow": "" }] }] }, "streamSettings": { "network": "ws", "wsSettings": { "path": "/stream/751394/socket", "host": "friendlynode.ru", "headers": {} }, "security": "tls", "tlsSettings": { "serverName": "friendlynode.ru", "enableSessionResumption": false, "fingerprint": "firefox", "alpn": ["http/1.1"] } } },
       { "tag": "direct", "protocol": "freedom", "settings": {} },
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
@@ -861,25 +485,7 @@
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "friendlynode.ru",
-              "port": 443,
-              "users": [{ "id": "cd7172ff-475f-421e-a9d8-b42fe606bade", "encryption": "none", "flow": "" }]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "xhttp",
-          "xhttpSettings": { "mode": "packet-up", "host": "friendlynode.ru", "path": "/api/v2/pen7c33" },
-          "security": "tls",
-          "tlsSettings": { "serverName": "friendlynode.ru", "enableSessionResumption": false, "fingerprint": "firefox", "alpn": ["h2", "http/1.1"] }
-        }
-      },
+      { "tag": "proxy", "protocol": "vless", "settings": { "vnext": [{ "address": "friendlynode.ru", "port": 443, "users": [{ "id": "cd7172ff-475f-421e-a9d8-b42fe606bade", "encryption": "none", "flow": "" }] }] }, "streamSettings": { "network": "xhttp", "xhttpSettings": { "mode": "packet-up", "host": "friendlynode.ru", "path": "/api/v2/pen7c33" }, "security": "tls", "tlsSettings": { "serverName": "friendlynode.ru", "enableSessionResumption": false, "fingerprint": "firefox", "alpn": ["h2", "http/1.1"] } } },
       { "tag": "direct", "protocol": "freedom", "settings": {} },
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
