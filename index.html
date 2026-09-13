@@ -30,7 +30,7 @@
     },
     "inbounds": [
       {
-        "tag": "socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks",
+        "tag": "local_socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks",
         "settings": { "udp": true, "auth": "noauth" },
         "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] }
       },
@@ -70,7 +70,7 @@
       ]
     },
     "remarks": "🇪🇺Авто-выбор | WI-FI",
-    "meta": { "serverDescription": "Авто-выбор для WI-FI" }
+    "meta": null
   },
   {
     "dns": { "servers": ["1.1.1.1", "1.0.0.1"], "queryStrategy": "UseIP" },
@@ -81,7 +81,7 @@
       "domainStrategy": "IPIfNonMatch"
     },
     "inbounds": [
-      { "tag": "socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
+      { "tag": "local_socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
@@ -90,7 +90,7 @@
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
     "remarks": "🇳🇱 Нидерланды",
-    "meta": { "serverDescription": "🏴‍☠️Торренты разрешенны." }
+    "meta": null
   },
   {
     "dns": { "servers": ["1.1.1.1", "1.0.0.1"], "queryStrategy": "UseIP" },
@@ -101,7 +101,7 @@
       "domainStrategy": "IPIfNonMatch"
     },
     "inbounds": [
-      { "tag": "socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
+      { "tag": "local_socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
@@ -110,7 +110,7 @@
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
     "remarks": "🇵🇱 Польша",
-    "meta": { "serverDescription": "⚡ Быстрый · 10 Гбит/с" }
+    "meta": null
   },
   {
     "dns": { "servers": ["1.1.1.1", "1.0.0.1"], "queryStrategy": "UseIP" },
@@ -121,7 +121,7 @@
       "domainStrategy": "IPIfNonMatch"
     },
     "inbounds": [
-      { "tag": "socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
+      { "tag": "local_socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
@@ -130,7 +130,7 @@
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
     "remarks": "🇹🇷 Турция",
-    "meta": { "serverDescription": "⚡ Быстрый · 10 Гбит/с" }
+    "meta": null
   },
   {
     "dns": { "servers": ["1.1.1.1", "1.0.0.1"], "queryStrategy": "UseIP" },
@@ -141,7 +141,7 @@
       "domainStrategy": "IPIfNonMatch"
     },
     "inbounds": [
-      { "tag": "socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
+      { "tag": "local_socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
@@ -150,7 +150,7 @@
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
     "remarks": "🇩🇪 Германия",
-    "meta": { "serverDescription": "⚡ Быстрый · 10 Гбит/с" }
+    "meta": null
   },
   {
     "dns": { "servers": ["1.1.1.1", "1.0.0.1"], "queryStrategy": "UseIP" },
@@ -161,7 +161,7 @@
       "domainStrategy": "IPIfNonMatch"
     },
     "inbounds": [
-      { "tag": "socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
+      { "tag": "local_socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
@@ -170,7 +170,7 @@
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
     "remarks": "🇪🇪 Эстония",
-    "meta": { "serverDescription": "⚡ Быстрый · 10 Гбит/с" }
+    "meta": null
   },
   {
     "dns": { "servers": ["1.1.1.1", "1.0.0.1"], "queryStrategy": "UseIP" },
@@ -181,7 +181,7 @@
       "domainStrategy": "IPIfNonMatch"
     },
     "inbounds": [
-      { "tag": "socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
+      { "tag": "local_socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
@@ -190,7 +190,7 @@
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
     "remarks": "🇺🇸 США | 🤖 Нейросети",
-    "meta": { "serverDescription": "Доступ к Gemini и др." }
+    "meta": null
   },
   {
     "dns": { "servers": ["1.1.1.1", "1.0.0.1"], "queryStrategy": "UseIP" },
@@ -201,7 +201,7 @@
       "domainStrategy": "IPIfNonMatch"
     },
     "inbounds": [
-      { "tag": "socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
+      { "tag": "local_socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
@@ -210,7 +210,7 @@
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
     "remarks": "🇫🇮 Финляндия",
-    "meta": { "serverDescription": "⚡ Быстрый · 10 Гбит/с" }
+    "meta": null
   },
   {
     "dns": { "servers": ["1.1.1.1", "1.0.0.1"], "queryStrategy": "UseIP" },
@@ -221,7 +221,7 @@
       "domainStrategy": "IPIfNonMatch"
     },
     "inbounds": [
-      { "tag": "socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
+      { "tag": "local_socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
@@ -230,7 +230,7 @@
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
     "remarks": "🇸🇪 Швеция",
-    "meta": { "serverDescription": "⚡ Быстрый · 10 Гбит/с" }
+    "meta": null
   },
   {
     "dns": { "servers": ["1.1.1.1", "1.0.0.1"], "queryStrategy": "UseIP" },
@@ -241,7 +241,7 @@
       "domainStrategy": "IPIfNonMatch"
     },
     "inbounds": [
-      { "tag": "socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
+      { "tag": "local_socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
@@ -250,7 +250,7 @@
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
     "remarks": "🇱🇻 Латвия",
-    "meta": { "serverDescription": "⚡ Быстрый · 10 Гбит/с" }
+    "meta": null
   },
   {
     "dns": { "servers": ["1.1.1.1", "1.0.0.1"], "queryStrategy": "UseIP" },
@@ -261,7 +261,7 @@
       "domainStrategy": "IPIfNonMatch"
     },
     "inbounds": [
-      { "tag": "socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
+      { "tag": "local_socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
@@ -270,7 +270,7 @@
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
     "remarks": "🇱🇹 Литва",
-    "meta": { "serverDescription": "⚡ Быстрый · 10 Гбит/с" }
+    "meta": null
   },
   {
     "dns": { "servers": ["1.1.1.1", "1.0.0.1"], "queryStrategy": "UseIP" },
@@ -281,7 +281,7 @@
       "domainStrategy": "IPIfNonMatch"
     },
     "inbounds": [
-      { "tag": "socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
+      { "tag": "local_socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
@@ -290,7 +290,7 @@
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
     "remarks": "🇷🇺 Россия | Москва",
-    "meta": { "serverDescription": "Для YouTube и РФ сервисов" }
+    "meta": null
   },
   {
     "dns": { "servers": ["1.1.1.1", "1.0.0.1"], "queryStrategy": "UseIP" },
@@ -301,7 +301,7 @@
       "domainStrategy": "IPIfNonMatch"
     },
     "inbounds": [
-      { "tag": "socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
+      { "tag": "local_socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
@@ -310,7 +310,7 @@
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
     "remarks": "🇰🇿 Казахстан",
-    "meta": { "serverDescription": "⚡ Быстрый · 10 Гбит/с" }
+    "meta": null
   },
   {
     "dns": { "servers": ["1.1.1.1", "1.0.0.1"], "queryStrategy": "UseIP" },
@@ -321,7 +321,7 @@
       "domainStrategy": "IPIfNonMatch"
     },
     "inbounds": [
-      { "tag": "socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
+      { "tag": "local_socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
@@ -330,7 +330,7 @@
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
     "remarks": "🇯🇵 Япония",
-    "meta": { "serverDescription": "🌍 Для жителей востока РФ" }
+    "meta": null
   },
   {
     "dns": { "servers": ["1.1.1.1", "1.0.0.1"], "queryStrategy": "UseIP" },
@@ -341,7 +341,7 @@
       "domainStrategy": "IPIfNonMatch"
     },
     "inbounds": [
-      { "tag": "socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
+      { "tag": "local_socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
@@ -350,7 +350,7 @@
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
     "remarks": "🇷🇺 Россия | 🎮 Игровой",
-    "meta": { "serverDescription": "🎮 Для мобильных игр" }
+    "meta": null
   },
   {
     "dns": { "servers": ["1.1.1.1", "1.0.0.1"], "queryStrategy": "UseIP" },
@@ -361,7 +361,7 @@
       "domainStrategy": "IPIfNonMatch"
     },
     "inbounds": [
-      { "tag": "socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
+      { "tag": "local_socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
@@ -370,7 +370,7 @@
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
     "remarks": "🇫🇮 Финляндия | 🎮 Игровой",
-    "meta": { "serverDescription": "🎮 Для мобильных игр" }
+    "meta": null
   },
   {
     "dns": { "servers": ["1.1.1.1", "1.0.0.1"], "queryStrategy": "UseIP" },
@@ -381,7 +381,7 @@
       "domainStrategy": "IPIfNonMatch"
     },
     "inbounds": [
-      { "tag": "socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
+      { "tag": "local_socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
@@ -390,7 +390,7 @@
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
     "remarks": "🇩🇪 Германия | 🎮 Игровой",
-    "meta": { "serverDescription": "🎮 Для мобильных игр" }
+    "meta": null
   },
   {
     "dns": { "servers": ["1.1.1.1", "1.0.0.1"], "queryStrategy": "UseIP" },
@@ -401,7 +401,7 @@
       "domainStrategy": "IPIfNonMatch"
     },
     "inbounds": [
-      { "tag": "socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
+      { "tag": "local_socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
@@ -410,7 +410,7 @@
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
     "remarks": "🇵🇱 Польша | 🎮 Игровой",
-    "meta": { "serverDescription": "🎮 Для мобильных игр" }
+    "meta": null
   },
   {
     "dns": { "servers": ["1.1.1.1", "1.0.0.1"], "queryStrategy": "UseIP" },
@@ -421,7 +421,7 @@
       "domainStrategy": "IPIfNonMatch"
     },
     "inbounds": [
-      { "tag": "socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
+      { "tag": "local_socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
@@ -430,7 +430,7 @@
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
     "remarks": "🇪🇺 Мобильный интернет #1",
-    "meta": { "serverDescription": "" }
+    "meta": null
   },
   {
     "dns": { "servers": ["1.1.1.1", "1.0.0.1"], "queryStrategy": "UseIP" },
@@ -441,7 +441,7 @@
       "domainStrategy": "IPIfNonMatch"
     },
     "inbounds": [
-      { "tag": "socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
+      { "tag": "local_socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
@@ -450,7 +450,7 @@
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
     "remarks": "🇪🇺 Мобильный интернет #2",
-    "meta": { "serverDescription": "" }
+    "meta": null
   },
   {
     "dns": { "servers": ["1.1.1.1", "1.0.0.1"], "queryStrategy": "UseIP" },
@@ -461,7 +461,7 @@
       "domainStrategy": "IPIfNonMatch"
     },
     "inbounds": [
-      { "tag": "socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
+      { "tag": "local_socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
@@ -470,7 +470,7 @@
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
     "remarks": "🇪🇺 Мобильный интернет #3",
-    "meta": { "serverDescription": "" }
+    "meta": null
   },
   {
     "dns": { "servers": ["1.1.1.1", "1.0.0.1"], "queryStrategy": "UseIP" },
@@ -481,7 +481,7 @@
       "domainStrategy": "IPIfNonMatch"
     },
     "inbounds": [
-      { "tag": "socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
+      { "tag": "local_socks", "port": 10808, "listen": "127.0.0.1", "protocol": "socks", "settings": { "udp": true, "auth": "noauth" }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } },
       { "tag": "http", "port": 10809, "listen": "127.0.0.1", "protocol": "http", "settings": { "allowTransparent": false }, "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http", "tls", "quic"] } }
     ],
     "outbounds": [
@@ -490,6 +490,6 @@
       { "tag": "block", "protocol": "blackhole", "settings": {} }
     ],
     "remarks": "🇪🇺 Мобильный интернет #4",
-    "meta": { "serverDescription": "" }
+    "meta": null
   }
 ]
