@@ -15,7 +15,12 @@
       "balancers": [
         {
           "tag": "auto-wifi",
-          "selector": ["proxy-wifi-"],
+          "selector": [
+            "proxy-wifi-1", "proxy-wifi-2", "proxy-wifi-3", "proxy-wifi-4",
+            "proxy-wifi-5", "proxy-wifi-6", "proxy-wifi-7", "proxy-wifi-8",
+            "proxy-wifi-9", "proxy-wifi-10", "proxy-wifi-11", "proxy-wifi-12",
+            "proxy-wifi-13", "proxy-wifi-14"
+          ],
           "strategy": { "type": "random" },
           "fallbackTag": "proxy-wifi-1"
         }
@@ -57,7 +62,12 @@
       "enabled": true,
       "probeURL": "http://www.msftconnecttest.com/connecttest.txt",
       "probeInterval": "3s",
-      "subjectSelector": ["proxy-wifi-"]
+      "subjectSelector": [
+        "proxy-wifi-1", "proxy-wifi-2", "proxy-wifi-3", "proxy-wifi-4",
+        "proxy-wifi-5", "proxy-wifi-6", "proxy-wifi-7", "proxy-wifi-8",
+        "proxy-wifi-9", "proxy-wifi-10", "proxy-wifi-11", "proxy-wifi-12",
+        "proxy-wifi-13", "proxy-wifi-14"
+      ]
     },
     "remarks": "🇪🇺Авто-выбор | WI-FI",
     "meta": { "serverDescription": "Авто-выбор для WI-FI" }
